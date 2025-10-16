@@ -1,17 +1,9 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import styles from './AboutMe.module.scss';
 
 const AboutMe: React.FC = () => {
     return (
-        <>
-            <Helmet>
-                <title>Про мене | Portfolio</title>
-                <meta
-                    name="description"
-                    content="Я — фронтенд-розробник із Ліберця, Чехія. Створюю сучасні вебінтерфейси з HTML, CSS, JS та React. Адаптивний дизайн і якість коду — мої пріоритети."
-                />
-            </Helmet>
+
 
             <section className={styles.aboutme} id="about">
                 <div className={styles.container}>
@@ -92,7 +84,6 @@ const AboutMe: React.FC = () => {
                     </div>
                 </div>
             </section>
-        </>
     );
 };
 

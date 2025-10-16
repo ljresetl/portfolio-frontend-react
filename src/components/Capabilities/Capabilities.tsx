@@ -1,17 +1,8 @@
 import React from "react";
-import { Helmet } from "react-helmet-async";
 import styles from './Capabilities.module.scss';
 
 const Capabilities: React.FC = () => {
     return (
-        <>
-            <Helmet>
-                <title>Мої навички | Portfolio</title>
-                <meta
-                    name="description"
-                    content="Мої ключові навички: HTML, CSS/SCSS, JavaScript, React, TypeScript, Figma та Vite. Постійно розвиваюся та освоюю сучасні веб-технології."
-                />
-            </Helmet>
 
             <section id="capabilities" className={styles.capabilities}>
                 <div className={styles.container}>
@@ -37,7 +28,6 @@ const Capabilities: React.FC = () => {
                     </div>
                 </div>
             </section>
-        </>
     );
 };
 

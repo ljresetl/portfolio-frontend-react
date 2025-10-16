@@ -1,17 +1,8 @@
 import React from "react";
-import { Helmet } from "react-helmet-async";
 import styles from './Foto.module.scss';
 
 const Foto: React.FC = () => {
     return (
-        <>
-            <Helmet>
-                <title>Про мене | Portfolio</title>
-                <meta
-                    name="description"
-                    content="Привіт! Я Віталій — Frontend розробник-початківець. Активно вивчаю JavaScript, HTML, CSS та Fullstack розробку. Створюю адаптивні і привабливі веб-інтерфейси."
-                />
-            </Helmet>
 
             <section className={styles.foto}>
                 <div className={styles.container}>
@@ -55,7 +46,7 @@ const Foto: React.FC = () => {
                     </div>
                 </div>
             </section>
-        </>
+
     )
 }
 

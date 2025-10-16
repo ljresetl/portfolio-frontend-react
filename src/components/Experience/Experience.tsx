@@ -1,17 +1,8 @@
 import React from "react";
-import { Helmet } from "react-helmet-async";
 import styles from './Experience.module.scss';
 
 const Experience: React.FC = () => {
     return (
-        <>
-            <Helmet>
-                <title>Мій досвід | Portfolio</title>
-                <meta
-                    name="description"
-                    content="Мій досвід: самостійне навчання, практичні проєкти, курси та онлайн-навчання, освоєння сучасних технологій фронтенд-розробки та Fullstack курси GoIT."
-                />
-            </Helmet>
 
             <section className={styles.experience}>
                 <div className={styles.container}>
@@ -57,7 +48,6 @@ const Experience: React.FC = () => {
                     </div>
                 </div>
             </section>
-        </>
     );
 };
 

@@ -1,17 +1,8 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import styles from './Header.module.scss';
 
 const Header: React.FC = () => {
   return (
-    <>
-      <Helmet>
-        <title>FrontEnd Portfolio | Віталій Баранов</title>
-        <meta
-          name="description"
-          content="Портфоліо Віталія Баранова – Frontend розробника-початківця. HTML, CSS, JavaScript, React, TypeScript. Про мене, навички, досвід, проекти та контакти."
-        />
-      </Helmet>
 
       <header className={styles.header}>
         <div className={styles.container}>
@@ -113,7 +104,6 @@ const Header: React.FC = () => {
           {/* Кінець мобільного меню */}
         </div>
       </header>
-    </>
   );
 };
 
