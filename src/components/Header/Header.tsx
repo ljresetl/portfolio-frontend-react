@@ -4,7 +4,7 @@ import styles from './Header.module.scss';
 const Header: React.FC = () => {
   return (
      <header className={styles.header}>
-      <div className={`${styles.container} ${styles.header_container}`}>
+      <div className={styles.container}>
         <nav className={styles.navigation} aria-label="Головне меню">
           <p className={styles.logo}>FrontEnd</p>
           <ul className={styles.header_ul}>

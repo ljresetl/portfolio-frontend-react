@@ -1,7 +1,7 @@
 import React from "react";
 import Header from '../Header/Header'
-// import Foto from '../Foto/Foto'
-// import AboutMe from '../About-me/AboutMe'
+import AboutMe from '../About-me/AboutMe'
+import Foto from '../Foto/Foto'
 // import Capabilities from '../Capabilities/Capabilities'
 // import Experience from '../Experience/Experience'
 // import Portfolio from '../Portfolio/Portfolio'
@@ -14,9 +14,9 @@ const App: React.FC = () => {
     return (
         <>
             <Header />
-            {/* <AboutMe />
+            <AboutMe />
             <Foto />
-            <Capabilities />
+            {/* <Capabilities />
             <Experience />
             <Portfolio />
             <Connect />
