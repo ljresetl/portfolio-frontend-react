@@ -1,0 +1,79 @@
+/* Скидання відступів для заголовків та абзаців */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+/* Плавна прокрутка */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Останній абзац */
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* Скидання списків */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Скидання стилів для посилань та кнопок */
+a {
+  text-decoration: none;
+  color: currentColor;
+  font-style: normal;
+}
+
+button {
+  font-family: inherit;
+  color: currentColor;
+  cursor: pointer;
+  padding: 0;
+}
+
+img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Сховані елементи для доступності */
+.visually_hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Manrope", sans-serif;
+  color: #c7c7c7;
+  letter-spacing: 0.02em;
+  background-color: #0a0a0a;
+  transition: background-color 0.3s, color 0.3s;
+
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: #c7c7c7;
+}

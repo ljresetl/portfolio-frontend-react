@@ -1,0 +1,83 @@
+
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #1b1a1a;
+  .container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      text-align: center;
+      max-width: 375px;
+      padding: 0px 16px;
+      gap: 8px;
+    }
+}
+
+.header_ul,
+.mobile_menu {
+  display: none;
+}
+// Лого
+.logo {
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: #c7c7c7;
+  padding: 20px 0;
+}
+
+// переключення теми і мови сайту
+.language_switcher {
+  display: flex;
+  align-items: center; 
+  gap: 6px;
+
+  .theme_switcher {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+.language_switcher_button {
+  background-color: #28a745;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 10px;
+
+    &:hover {
+background-color: #40b822;
+    }
+
+        .language-switcher-button.active {
+          background-color: #3a4b3d;
+        }
+  }
+}
+
+.burger_menu {
+  background-color: transparent;
+  border: none;
+  .burger_menu_icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      stroke-width: 2px;
+      stroke: #c7c7c7;
+      width: 18px;
+      height: 20px;
+    }
+}
+
