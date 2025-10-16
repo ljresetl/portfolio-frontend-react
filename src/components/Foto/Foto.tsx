@@ -6,8 +6,8 @@ const Foto: React.FC = () => {
 <section className={styles.foto}>
         <div className={styles.container}>
           <img
-            srcSet="./images/343.WEBP 1x, ./images/686.WEBP 2x"
-            src="./images/343.WEBP"
+            srcSet="./images/343.webp 1x, ./images/686.webp 2x"
+            src="./images/343.webp"
             width="343"
             height="343"
             alt="front-end"
