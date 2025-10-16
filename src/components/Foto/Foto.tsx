@@ -12,6 +12,7 @@ const Foto: React.FC = () => {
             height="343"
             alt="front-end"
             className={styles.my_foto}
+            loading="lazy"
           />
           <div className={styles.about_me_text}>
             <h1 className={styles.about_me_text_h} data-i18n="navAboutTextH">
