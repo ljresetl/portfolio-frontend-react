@@ -8,7 +8,7 @@ const AboutMe: React.FC = () => {
             <section className={styles.aboutme} id="about">
                 <div className={styles.container}>
                     <h1 className={styles.about_me_h} data-i18n="navAboutMe">
-                        About Me
+                        Про мене
                     </h1>
                     <div className={styles.about_me_right}>
                         <p
