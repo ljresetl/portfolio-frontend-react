@@ -24,7 +24,7 @@ const Header: React.FC = () => {
         </nav>
         {/* <!-- кнопки переключення мови початок --> */}
         <div className={styles.language_switcher}>
-          {/* <!-- перемикач на свутлу-темну тему сайту --> */}
+          {/* <!-- перемикач на світлу-темну тему сайту --> */}
           <button
             type="button"
             id="theme-toggle"
