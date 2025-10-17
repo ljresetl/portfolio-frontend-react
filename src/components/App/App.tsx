@@ -4,7 +4,7 @@ import AboutMe from '../About-me/AboutMe'
 import Foto from '../Foto/Foto'
 import Capabilities from '../Capabilities/Capabilities'
 import Experience from '../Experience/Experience'
-// import Portfolio from '../Portfolio/Portfolio'
+import Portfolio from '../Portfolio/Portfolio'
 // import Connect from '../Connect/Connect'
 // import Footer from '../Footer/Footer'
 
@@ -18,8 +18,8 @@ const App: React.FC = () => {
             <Foto />
             <Capabilities />
             <Experience />
-            {/* <Portfolio />
-            <Connect />
+            <Portfolio />
+            {/* <Connect />
             <Footer /> */}
         </>
     )
