@@ -5,7 +5,7 @@ import Foto from '../Foto/Foto'
 import Capabilities from '../Capabilities/Capabilities'
 import Experience from '../Experience/Experience'
 import Portfolio from '../Portfolio/Portfolio'
-// import Connect from '../Connect/Connect'
+import Connect from '../Connect/Connect'
 // import Footer from '../Footer/Footer'
 
 import '../App/App.module.scss'
@@ -19,8 +19,8 @@ const App: React.FC = () => {
             <Capabilities />
             <Experience />
             <Portfolio />
-            {/* <Connect />
-            <Footer /> */}
+            <Connect />
+            {/* <Footer /> */}
         </>
     )
 }

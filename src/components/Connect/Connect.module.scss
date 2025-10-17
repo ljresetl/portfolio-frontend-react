@@ -1,0 +1,108 @@
+.connect {
+  padding: 64px 0px;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-family: "Bebas Neue", sans-serif;
+    margin: 0 auto;
+    padding: 0px 16px;
+  }
+}
+
+.connect_container_one {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .connect_container_one_h {
+    font-weight: 400;
+    font-size: 43px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .connect_container_one_p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #c7c7c7;
+
+    .connect_span_a,
+    .connect_span_resume {
+      font-family: "Manrope", sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #fff;
+      text-decoration-line: underline;
+      text-decoration-color: #d3e97a;
+      text-decoration-thickness: 2px; /* товщина */
+      text-underline-offset: 1px; /* відстань від тексту */
+    }
+  }
+
+  .connect_svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 32px;
+
+    .about_me_svg_link_connect {
+      fill: #d3e97a;
+    }
+  }
+}
+
+.connect_container_two {
+  .modal_form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 8px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #c7c7c7;
+    font-family: "Manrope", sans-serif;
+
+    .modal_input {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #fff;
+      border-radius: 4px;
+      padding: 10px 16px;
+      height: 46px;
+      background-color: #1a1a1a;
+      border: none;
+    }
+
+    .modal_textarea {
+      margin-bottom: 24px;
+      border-radius: 4px;
+      padding: 10px 16px;
+      height: 148px;
+      background-color: #1a1a1a;
+      color: #fff;
+    }
+
+    .modal_button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 100px;
+      border: none;
+      padding: 20px 40px;
+      background-color: #d3e97a;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1;
+      text-transform: uppercase;
+      color: #0a0a0a;
+    }
+  }
+}
