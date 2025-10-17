@@ -67,7 +67,12 @@
   }
 
   .connect_svg_mobile {
-    margin: 0;
+    display: flex;
+    gap: 20px;
     padding: 20px;
   }
+}
+
+.about_me_svg_link_connect {
+  fill: #d3e97a;
 }
