@@ -13,7 +13,7 @@ export const projects = [
         image: "./images/-3.webp",
         technologies: ["React", "TypeScript", "JS"],
         github: "https://github.com/ljresetl/03-react-movies",
-        wesite: "https://03-react-movies-one-liard.vercel.app/",
+        website: "https://03-react-movies-one-liard.vercel.app/",
     },
     {
         title: "Додаток фільмів",
@@ -21,7 +21,7 @@ export const projects = [
         image: "./images/-2.webp",
         technologies: ["HTML", "CSS", "JS"],
         github: "https://github.com/pattaroni/project-Dev4L1fe",
-        wesite: "https://pattaroni.github.io/project-Dev4L1fe/",
+        website: "https://pattaroni.github.io/project-Dev4L1fe/",
     },
     {
         title: "Музичне портфоліо",
@@ -29,7 +29,7 @@ export const projects = [
         image: "./images/-1.webp",
         technologies: ["HTML", "CSS", "JS"],
         github: "https://github.com/ljresetl/New-Single-Dj",
-        wesite: "https://ljresetl.github.io/New-Single-Dj/",
+        website: "https://ljresetl.github.io/New-Single-Dj/",
     },
     {
         title: "Фінансовий консалтинг",
@@ -37,7 +37,7 @@ export const projects = [
         image: "./images/foto1.webp",
         technologies: ["HTML", "CSS", "JS"],
         github: "https://github.com/ljresetl/financial_consulting",
-        wesite: "https://ljresetl.github.io/financial_consulting/",
+        website: "https://ljresetl.github.io/financial_consulting/",
     },
     {
         title: "Сайт кіно - односторінковий приклад",
@@ -45,7 +45,7 @@ export const projects = [
         image: "./images/kino411.webp",
         technologies: ["HTML", "CSS", "JS"],
         github: "https://github.com/ljresetl/kino2",
-        wesite: "https://ljresetl.github.io/kino2/",
+        website: "https://ljresetl.github.io/kino2/",
     },
     {
         title: "Барбершоп",
@@ -53,7 +53,7 @@ export const projects = [
         image: "./images/priklad3-411x350.webp",
         technologies: ["HTML", "CSS", "JS"],
         github: "https://github.com/ljresetl/barbershop",
-        wesite: "https://ljresetl.github.io/barbershop/",
+        website: "https://ljresetl.github.io/barbershop/",
     },
     {
         title: "Вебстудія",
@@ -61,7 +61,7 @@ export const projects = [
         image: "./images/maket411.webp",
         technologies: ["HTML", "CSS", "JS"],
         github: "https://github.com/ljresetl/PRODUCT-business",
-        wesite: "https://ljresetl.github.io/PRODUCT-business/",
+        website: "https://ljresetl.github.io/PRODUCT-business/",
     },
     {
         title: "Яхти",
@@ -69,7 +69,7 @@ export const projects = [
         image: "./images/projekt411x266.webp",
         technologies: ["HTML", "CSS", "JS"],
         github: "https://github.com/ljresetl/team-work-yachtjet",
-        wesite: "https://ljresetl.github.io/team-work-yachtjet/",
+        website: "https://ljresetl.github.io/team-work-yachtjet/",
     },
     {
         title: "Сайт погоди",
@@ -77,7 +77,7 @@ export const projects = [
         image: "./images/fotoýproject.webp",
         technologies: ["HTML", "CSS", "JS"],
         github: "https://github.com/ljresetl/weather-html-css-js",
-        wesite: "https://ljresetl.github.io/weather-html-css-js/",
+        website: "https://ljresetl.github.io/weather-html-css-js/",
     },
     {
         title: "SWES Reservation Module",
@@ -85,6 +85,6 @@ export const projects = [
         image: "./images/priklad8.webp",
         technologies: ["HTML", "CSS", "JS"],
         github: "https://github.com/ljresetl/SWES-Reservation-Module",
-        wesite: "https://ljresetl.github.io/SWES-Reservation-Module/",
+        website: "https://ljresetl.github.io/SWES-Reservation-Module/",
     },
 ]
