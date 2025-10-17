@@ -2,7 +2,7 @@ export const projects = [
     {
     title: "Гра на клавіатурі - Тест",
     description: "Опис: інтерактивна веб-гра для тренування набору тексту наклавіатурі. Тестуй свою швидкість і точність у написанні, зрізними рівнями складності та приємним інтерфейсом.",
-    image: "./images/-4.png",
+    image: "./images/-4.webp",
     technologies: ["HTML", "CSS", "JS"],
     github: "https://github.com/ljresetl/game-for-you",
     website: "https://game-for-you-tawny.vercel.app/",
@@ -10,7 +10,7 @@ export const projects = [
     {
         title: "Пошук карток фільмів",
         description: "Опис: React Movies – вебдодаток для перегляду інформації про фільми.",
-        image: "./images/-3.png",
+        image: "./images/-3.webp",
         technologies: ["React", "TypeScript", "JS"],
         github: "https://github.com/ljresetl/03-react-movies",
         wesite: "https://03-react-movies-one-liard.vercel.app/",
@@ -18,7 +18,7 @@ export const projects = [
     {
         title: "Додаток фільмів",
         description: "Опис: каталог музичних виконавців, їхніх пісень, біографій та відгуків. Робив Хедер. Спільний, командний проект.",
-        image: "./images/-2.png",
+        image: "./images/-2.webp",
         technologies: ["HTML", "CSS", "JS"],
         github: "https://github.com/pattaroni/project-Dev4L1fe",
         wesite: "https://pattaroni.github.io/project-Dev4L1fe/",
@@ -26,7 +26,7 @@ export const projects = [
     {
         title: "Музичне портфоліо",
         description: "Опис: Адаптивний односторінковий сайт для музичного виконавця, що презентує його нові сингли та майбутній альбом. Вебсайт включає інтегрований аудіоплеєр.",
-        image: "./images/-1.png",
+        image: "./images/-1.webp",
         technologies: ["HTML", "CSS", "JS"],
         github: "https://github.com/ljresetl/New-Single-Dj",
         wesite: "https://ljresetl.github.io/New-Single-Dj/",
@@ -34,7 +34,7 @@ export const projects = [
     {
         title: "Фінансовий консалтинг",
         description: "Опис: односторінковий адаптивний сайт для британської компанії з фінансового консалтингу. Містить опис послуг, переваги компанії, форму зворотного зв’язку, блог, інтерактивну карту.",
-        image: "./images/foto1.png",
+        image: "./images/foto1.webp",
         technologies: ["HTML", "CSS", "JS"],
         github: "https://github.com/ljresetl/financial_consulting",
         wesite: "https://ljresetl.github.io/financial_consulting/",
@@ -42,7 +42,7 @@ export const projects = [
     {
         title: "Сайт кіно - односторінковий приклад",
         description: "Опис: односторінковий сайт, що надає користувачам можливість переглядати фільми та серіали українською мовою. Інтерфейс сайту простий і зручний, з адаптивним дизайном.",
-        image: "./images/kino411.png",
+        image: "./images/kino411.webp",
         technologies: ["HTML", "CSS", "JS"],
         github: "https://github.com/ljresetl/kino2",
         wesite: "https://ljresetl.github.io/kino2/",
@@ -50,7 +50,7 @@ export const projects = [
     {
         title: "Барбершоп",
         description: "Опис: односторінковий адаптивний сайт для чоловічої перукарні в Києві. Він поєднує стильний дизайн із зручним функціоналом для онлайн-запису та швидкого перегляду послуг.",
-        image: "./images/priklad3-411x350.png",
+        image: "./images/priklad3-411x350.webp",
         technologies: ["HTML", "CSS", "JS"],
         github: "https://github.com/ljresetl/barbershop",
         wesite: "https://ljresetl.github.io/barbershop/",
@@ -58,7 +58,7 @@ export const projects = [
     {
         title: "Вебстудія",
         description: "Опис: односторінковий адаптивний сайт, створений у рамках домашнього завдання №6 курсу GoIT. Сайт демонструє можливості веб-студії, що спеціалізується на цифровому дизайні та маркетингових рішеннях.",
-        image: "./images/maket411.png",
+        image: "./images/maket411.webp",
         technologies: ["HTML", "CSS", "JS"],
         github: "https://github.com/ljresetl/PRODUCT-business",
         wesite: "https://ljresetl.github.io/PRODUCT-business/",
@@ -66,7 +66,7 @@ export const projects = [
     {
         title: "Яхти",
         description: "Опис: односторінковий сайт, розроблений у рамках командного проєкту, що демонструє можливості оренди розкішних яхт для подорожей. Сайт поєднує елегантний дизайн із зручним функціоналом для перегляду флоту та відгуків клієнтів.",
-        image: "./images/projekt411x266.png",
+        image: "./images/projekt411x266.webp",
         technologies: ["HTML", "CSS", "JS"],
         github: "https://github.com/ljresetl/team-work-yachtjet",
         wesite: "https://ljresetl.github.io/team-work-yachtjet/",
@@ -74,7 +74,7 @@ export const projects = [
     {
         title: "Сайт погоди",
         description: "Опис: Сайт погоди – веб-додаток для перегляду прогнозу погоди в обраних містах. Підтримує погодинний та денний прогноз, автодоповнення при введенні міста та кілька мов (чеська, українська, англійська).",
-        image: "./images/fotoýproject.png",
+        image: "./images/fotoýproject.webp",
         technologies: ["HTML", "CSS", "JS"],
         github: "https://github.com/ljresetl/weather-html-css-js",
         wesite: "https://ljresetl.github.io/weather-html-css-js/",
@@ -82,7 +82,7 @@ export const projects = [
     {
         title: "SWES Reservation Module",
         description: "Опис: Інтерфейс для бронювання та управління обладнанням у компанії. Користувачі можуть створювати бронювання, переглядати історію, фільтрувати за типом та статусом, а також переглядати календар.",
-        image: "./images/priklad8.png",
+        image: "./images/priklad8.webp",
         technologies: ["HTML", "CSS", "JS"],
         github: "https://github.com/ljresetl/SWES-Reservation-Module",
         wesite: "https://ljresetl.github.io/SWES-Reservation-Module/",
