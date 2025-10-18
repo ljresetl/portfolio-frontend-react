@@ -1,97 +1,156 @@
 .portfolio {
-  padding: 64px 0px;
+  padding: 64px 0;
+  background-color: #0a0a0a;
+
   .container {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 40px;
     margin: 0 auto;
-    padding: 0px 16px;
-    .button_loadmore {
-      margin: 0 auto;
-      border-radius: 100px;
-      padding: 10px 20px;
-      min-width: 370px;
-      height: 44px;
-      background-color: #e1e5da;
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 1;
-      text-transform: uppercase;
-      color: #0a0a0a;
-      border: none;
-    }
+    padding: 0 16px;
+    max-width: 1200px;
   }
+
   .portfolio_h {
     font-weight: 400;
-    font-size: 43px;
-    line-height: 1;
+    font-size: 36px;
+    line-height: 1.2;
     letter-spacing: -0.02em;
     text-align: center;
-  }
-}
+    color: #fff;
 
-.portfolio_list {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+    @media (min-width: 768px) {
+      font-size: 43px;
+    }
+  }
+
+  .portfolio_list {
+    display: grid;
+    grid-template-columns: 1fr; // 1 картка на мобільних
+    gap: 24px;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr); // 2 картки на планшетах+
+      gap: 32px;
+    }
+  }
+
   .project_card {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
+    background-color: #1b1a1a;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+    margin-bottom: 20px;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    }
+
     .portfolio_h_4 {
       font-weight: 700;
       font-size: 18px;
       line-height: 1.3;
-      letter-spacing: -0.01em;
       color: #fff;
     }
+
     .portfolio_p {
       font-weight: 400;
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.6;
       color: #c7c7c7;
+      height: 110px;
     }
+
+    .portfolio_p_t {
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #ffffff;
+      margin-top: 8px;
+      min-height: 25px; // щоб усі були на одній висоті
+    }
+
     .project_image {
+      width: 100%;
+      height: auto;
       border-radius: 8px;
+      object-fit: cover;
+      height: 400px;
+    }
+
+    .project_tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 14px;
+      color: #c7c7c7;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      justify-content: flex-start;
+
+      li {
+        background-color: #2b2a2a;
+        border-radius: 6px;
+        padding: 4px 10px;
+      }
+    }
+
+    .project_links {
+      display: flex;
+      justify-content: space-around;
+      gap: 10px;
+      margin-top: auto;
+
+      .project_button {
+        display: inline-block;
+        padding: 8px 36px;
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+
+        &:hover,
+        &:focus {
+          background-color: #40b822;
+          outline: none;
+        }
+      }
     }
   }
-}
 
-.project_tech {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  gap: 10px;
-  text-align: left;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #c7c7c7;
-}
-
-.project_links {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-
-  .project_button {
-    display: inline-block;
-    padding: 8px 66px;
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none; /* прибирає підкреслення */
+  .button_loadmore {
+    display: block;
+    margin: 0 auto;
+    border-radius: 100px;
+    padding: 12px 24px;
+    min-width: 250px;
+    height: 44px;
+    background-color: #e1e5da;
+    font-weight: 700;
     font-size: 14px;
-    font-weight: 500;
-    transition: background-color 0.3s;
+    text-transform: uppercase;
+    color: #0a0a0a;
+    border: none;
     cursor: pointer;
+    transition: background-color 0.3s;
 
-    &:hover,       // ховер
-    &:focus {
-      // фокус (коли користувач табом або клікає)
-      background-color: #40b822; /* трохи світліше при наведенні */
-      outline: none; /* прибирає стандартну обведену рамку браузера */
+    &:hover {
+      background-color: #cdd1c7;
     }
   }
 }
