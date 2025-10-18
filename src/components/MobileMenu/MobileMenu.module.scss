@@ -5,11 +5,13 @@
   right: 0;
   width: 80%; // або скільки потрібно
   height: 100%;
-  background-color: #0a0a0a;
+  background-color: var(--card-bg-color); // фон під тему
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
   z-index: 1000;
   overflow-y: auto;
-  transition: transform 0.3s ease-in-out; // плавне відкривання
+  transition:
+    transform 0.3s ease-in-out,
+    background-color 0.3s ease;
 
   &.open {
     display: block;
@@ -23,18 +25,19 @@
     align-items: flex-start;
     padding: 0px 20px;
     font-family: "Manrope", sans-serif;
-    color: #c7c7c7;
+    color: var(--text-color); // текст під тему
     letter-spacing: 0.02em;
+    transition: color 0.3s ease;
 
     li {
       a {
-        color: #c7c7c7;
+        color: var(--text-color); // текст посилань під тему
         text-decoration: none;
         font-size: 16px;
         transition: color 0.2s;
 
         &:hover {
-          color: #fff;
+          color: var(--accent-color); // акцент під тему
         }
       }
     }
@@ -45,7 +48,8 @@
     top: 16px;
     right: 16px;
     display: block;
-    fill: #736a6a;
+    fill: var(--text-color); // іконка під тему
+    transition: fill 0.3s ease;
 
     .close_mobile_menu {
       display: flex;
@@ -54,14 +58,16 @@
       width: 24px; // клікабельна зона
       height: 24px;
       border-radius: 50%;
-      background-color: #d3e97a;
+      background-color: var(--accent-color); // фон кнопки під тему
       border: 1px solid rgba(0, 0, 0, 0.1);
       padding: 0;
       cursor: pointer;
+      transition: background-color 0.3s ease;
 
       .mobile_menu_btn_svg {
         display: block;
-        fill: #736a6a;
+        fill: var(--text-color); // іконка під тему
+        transition: fill 0.3s ease;
       }
     }
   }
@@ -70,9 +76,16 @@
     display: flex;
     gap: 20px;
     padding: 20px;
+
+    svg {
+      fill: var(--accent-color); // іконки під тему
+      transition: fill 0.3s ease;
+    }
   }
 }
 
+// Іконки для контактів
 .about_me_svg_link_connect {
-  fill: #d3e97a;
+  fill: var(--accent-color); // під тему
+  transition: fill 0.3s ease;
 }

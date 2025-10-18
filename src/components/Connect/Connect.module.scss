@@ -1,5 +1,9 @@
 .connect {
   padding: 24px 0px;
+  background-color: var(--card-bg-color); // фон картки залежно від теми
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 
   @media (min-width: 768px) {
     padding: 40px 0px;
@@ -12,6 +16,9 @@
     font-family: "Bebas Neue", sans-serif;
     margin: 0 auto;
     padding: 0px 16px;
+    color: var(--text-color); // текст залежно від теми
+    transition: color 0.3s ease;
+
     @media (min-width: 768px) {
       flex-direction: row;
       justify-content: space-between;
@@ -23,6 +30,8 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  transition: color 0.3s ease;
+
   @media (min-width: 768px) {
     flex: 1;
   }
@@ -39,7 +48,7 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 1.6;
-    color: #c7c7c7;
+    color: var(--text-color); // текст під тему
 
     .connect_span_a,
     .connect_span_resume {
@@ -47,11 +56,14 @@
       font-weight: 400;
       font-size: 16px;
       line-height: 1.6;
-      color: #fff;
+      color: var(--accent-color); // акцентний колір під тему
       text-decoration-line: underline;
-      text-decoration-color: #d3e97a;
-      text-decoration-thickness: 2px; /* товщина */
-      text-underline-offset: 1px; /* відстань від тексту */
+      text-decoration-color: var(--accent-color);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 1px;
+      transition:
+        color 0.3s ease,
+        text-decoration-color 0.3s ease;
     }
   }
 
@@ -61,12 +73,14 @@
     justify-content: center;
     gap: 32px;
     margin-top: 32px;
+
     @media (min-width: 768px) {
       justify-content: flex-start;
     }
 
     .about_me_svg_link_connect {
-      fill: #d3e97a;
+      fill: var(--accent-color); // зміна кольору під тему
+      transition: fill 0.3s ease;
     }
   }
 }
@@ -75,6 +89,7 @@
   @media (min-width: 768px) {
     flex: 1;
   }
+
   .modal_form {
     display: flex;
     flex-direction: column;
@@ -83,28 +98,28 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 1.6;
-    color: #c7c7c7;
+    color: var(--text-color);
     font-family: "Manrope", sans-serif;
+    transition: color 0.3s ease;
 
-    .modal_input {
+    .modal_input,
+    .modal_textarea {
       font-weight: 400;
       font-size: 16px;
       line-height: 1.6;
-      color: #fff;
+      color: var(--text-color);
       border-radius: 4px;
       padding: 10px 16px;
-      height: 46px;
-      background-color: #1a1a1a;
+      background-color: var(--li-bg-color); // фон полів під тему
       border: none;
+      transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
     }
 
     .modal_textarea {
       margin-bottom: 24px;
-      border-radius: 4px;
-      padding: 10px 16px;
       height: 148px;
-      background-color: #1a1a1a;
-      color: #fff;
     }
 
     .modal_button {
@@ -114,12 +129,15 @@
       border-radius: 100px;
       border: none;
       padding: 20px 40px;
-      background-color: #d3e97a;
+      background-color: var(--accent-color); // фон кнопки під тему
       font-weight: 700;
       font-size: 16px;
       line-height: 1;
       text-transform: uppercase;
-      color: #0a0a0a;
+      color: var(--bg-color); // колір тексту на кнопці залежно від теми
+      transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
     }
   }
 }

@@ -85,19 +85,25 @@ body {
 :root {
   /* Світла тема за замовчуванням */
   --bg-color: #ffffff;
+  --card-bg-color: #f5f5f5; /* фон карток для світлої теми */
   --text-color: #1b1a1a;
   --accent-color: #00ff95;
   transition: all 0.3s ease;
+  --li-bg-color: #ffffffbe;
 }
 
 body.dark {
+  --card-bg-color: #1a1a1a; /* фон карток для темної теми */
   --bg-color: #000000;
   --text-color: #ffffff;
   --accent-color: #1cce6f;
+  --li-bg-color: #2b2828be;
 }
 
 body.light {
   --bg-color: #ffffff;
   --text-color: #1b1a1a;
   --accent-color: #2d8d35;
+  --card-bg-color: #f5f5f5; /* фон карток для світлої теми */
+  --li-bg-color: #ffffffbe;
 }
