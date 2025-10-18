@@ -5,9 +5,9 @@
   background-color: #1b1a1a;
   .container {
     display: flex;
-    flex-direction: row;
+    // flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    // justify-content: space-between;
     margin: 0 auto;
     text-align: center;
     padding: 0px 16px;
@@ -78,5 +78,20 @@
     stroke: #c7c7c7;
     width: 18px;
     height: 20px;
+  }
+}
+
+// планшет
+@media screen and (min-width: 768px) {
+  .container {
+    .language_switcher {
+      justify-content: flex-end;
+      gap: 20px;
+    }
+    .burger_menu_icon {
+      margin-left: 20px;
+      width: 24px;
+      height: 24px;
+    }
   }
 }
