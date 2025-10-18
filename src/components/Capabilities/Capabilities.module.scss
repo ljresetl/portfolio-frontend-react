@@ -23,6 +23,7 @@
     letter-spacing: -0.02em;
     @media screen and (min-width: 1280px) {
       flex: 1;
+      padding: 10px;
     }
   }
 }
@@ -30,6 +31,7 @@
 .capabilities_right {
   @media screen and (min-width: 1280px) {
     flex: 1;
+    padding: 10px;
   }
   .capabilities_p {
     font-weight: 400;
