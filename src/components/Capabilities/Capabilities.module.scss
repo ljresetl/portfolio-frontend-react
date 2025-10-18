@@ -11,16 +11,26 @@
     gap: 12px;
     text-align: left;
     align-items: flex-start;
+    @media screen and (min-width: 1280px) {
+      flex-direction: row;
+      padding: 0px 30px;
+    }
   }
   .capabilities_h {
     font-weight: 400;
     font-size: 43px;
     line-height: 1;
     letter-spacing: -0.02em;
+    @media screen and (min-width: 1280px) {
+      flex: 1;
+    }
   }
 }
 
 .capabilities_right {
+  @media screen and (min-width: 1280px) {
+    flex: 1;
+  }
   .capabilities_p {
     font-weight: 400;
     font-size: 16px;
