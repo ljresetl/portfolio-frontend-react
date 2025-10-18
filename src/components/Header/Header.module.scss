@@ -3,24 +3,28 @@
   top: 0;
   z-index: 1000;
   background-color: #1b1a1a;
+
   .container {
     display: flex;
-    // flex-direction: row;
     align-items: center;
-    // justify-content: space-between;
+    justify-content: center; // мобільний - все по центру
     margin: 0 auto;
-    text-align: center;
-    padding: 0px 16px;
+    padding: 0 16px;
     gap: 8px;
     max-width: 100%;
+
+    @media screen and (min-width: 768px) {
+      justify-content: space-between; // планшет - логотип зліва, решта справа
+      gap: 20px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      justify-content: space-around; // десктоп - рівномірний розподіл
+    }
   }
 }
 
-.header_ul,
-.mobile_menu {
-  display: none;
-}
-// Лого
+// Логотип
 .logo {
   font-weight: 400;
   font-size: 28px;
@@ -30,13 +34,32 @@
   padding: 20px 0;
 }
 
-// переключення теми і мови сайту
+// Меню
+.header_ul {
+  display: none;
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-left: 500px;
+  }
+}
+
+.mobile_menu {
+  display: none;
+}
+
+// Перемикач мови та теми
 .language_switcher {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  // gap: 6px;
   width: 100%;
+
+  @media screen and (min-width: 768px) {
+    justify-content: flex-end;
+    gap: 20px;
+  }
 
   .theme_switcher {
     background-color: transparent;
@@ -61,15 +84,17 @@
       background-color: #40b822;
     }
 
-    .language-switcher-button.active {
+    &.active {
       background-color: #3a4b3d;
     }
   }
 }
 
+// Бургер-меню
 .burger_menu {
   background-color: transparent;
   border: none;
+
   .burger_menu_icon {
     display: flex;
     justify-content: center;
@@ -78,20 +103,33 @@
     stroke: #c7c7c7;
     width: 18px;
     height: 20px;
-  }
-}
 
-// планшет
-@media screen and (min-width: 768px) {
-  .container {
-    .language_switcher {
-      justify-content: flex-end;
-      gap: 20px;
-    }
-    .burger_menu_icon {
+    @media screen and (min-width: 768px) {
       margin-left: 20px;
       width: 24px;
       height: 24px;
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    display: none; // ховаємо на десктопі
+  }
+}
+
+// Додаткові стилі навігації для десктопу
+@media screen and (min-width: 1280px) {
+  .navigation {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    align-items: center;
+    flex: 1;
+
+    .ul_navigation_li {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #c7c7c7;
     }
   }
 }

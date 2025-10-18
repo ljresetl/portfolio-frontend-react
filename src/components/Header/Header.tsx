@@ -28,10 +28,10 @@ const Header: React.FC = () => {
         <nav className={styles.navigation} aria-label="Головне меню">
           <p className={styles.logo}>FrontEnd</p> {/* Логотип */}
           <ul className={styles.header_ul}> {/* Список пунктів меню */}
-            <li><a href="#about" data-i18n="navAbout">Про мене</a></li>
-            <li><a href="#capabilities" data-i18n="navCapabilities">Досвід</a></li>
-            <li><a href="#portfolio" data-i18n="navPortfolio">Портфоліо</a></li>
-            <li><a href="#connect" data-i18n="navConnect">Контакти</a></li>
+            <li className={styles.ul_navigation_li}><a href="#about" data-i18n="navAbout">Про мене</a></li>
+            <li className={styles.ul_navigation_li}><a href="#capabilities" data-i18n="navCapabilities">Досвід</a></li>
+            <li className={styles.ul_navigation_li}><a href="#portfolio" data-i18n="navPortfolio">Портфоліо</a></li>
+            <li className={styles.ul_navigation_li}><a href="#connect" data-i18n="navConnect">Контакти</a></li>
           </ul>
         </nav>
 
