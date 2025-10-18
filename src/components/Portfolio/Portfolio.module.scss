@@ -129,6 +129,9 @@
           background-color: #40b822;
           outline: none;
         }
+        @media (min-width: 768px) {
+          padding: 8px 76px;
+        }
       }
     }
   }
