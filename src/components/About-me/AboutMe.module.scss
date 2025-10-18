@@ -70,3 +70,15 @@
     }
   }
 }
+
+// планшет
+
+@media (min-width: 768px) {
+  .aboutme {
+    padding: 40px 0px;
+  }
+
+  .button_a_a {
+    justify-content: flex-end;
+  }
+}
