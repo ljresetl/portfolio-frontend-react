@@ -8,7 +8,10 @@
     gap: 40px;
     margin: 0 auto;
     padding: 0 16px;
-    max-width: 1200px;
+    // max-width: 1200px;
+    @media screen and (min-width: 1280px) {
+      padding: 0 30px;
+    }
   }
 
   .portfolio_h {
@@ -32,6 +35,10 @@
 
     @media (min-width: 768px) {
       grid-template-columns: repeat(2, 1fr); /* планшети: 2 картки */
+      gap: 10px;
+    }
+    @media screen and (min-width: 1280px) {
+      grid-template-columns: repeat(3, 1fr);
       gap: 10px;
     }
   }
