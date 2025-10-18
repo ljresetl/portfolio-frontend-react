@@ -12,7 +12,7 @@ const Portfolio: React.FC = () => {
   return (
     <section id="portfolio" className={styles.portfolio}>
       <div className={styles.container}>
-       <div className={styles.content}>
+       
           <h3 className={styles.portfolio_h}>Приклади робіт</h3>
   
           {/* Рендер карток через map */}
@@ -58,7 +58,7 @@ const Portfolio: React.FC = () => {
               Показати більше
             </button>
           )}
-        </div>
+        
        </div>
     </section>
   );
