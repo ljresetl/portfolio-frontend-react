@@ -2,7 +2,11 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: #1b1a1a;
+  background-color: var(--bg-color); // 🔹 фоновий колір залежно від теми
+  color: var(--text-color); // 🔹 текстовий колір залежно від теми
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease; // плавний перехід між темами
 
   .container {
     display: flex;
@@ -25,19 +29,21 @@
   }
 }
 
-// Логотип
+// === ЛОГОТИП ===
 .logo {
   font-weight: 400;
   font-size: 28px;
   line-height: 1;
   letter-spacing: -0.01em;
-  color: #c7c7c7;
+  color: var(--accent-color); // 🔹 тепер змінюється з темою
   padding: 20px 0;
+  transition: color 0.3s ease;
 }
 
-// Меню
+// === МЕНЮ ===
 .header_ul {
   display: none;
+
   @media screen and (min-width: 1280px) {
     display: flex;
     flex-direction: row;
@@ -50,7 +56,7 @@
   display: none;
 }
 
-// Перемикач мови та теми
+// === ПЕРЕМИКАЧ МОВИ ТА ТЕМИ ===
 .language_switcher {
   display: flex;
   align-items: center;
@@ -62,16 +68,23 @@
     gap: 20px;
   }
 
+  // Кнопка перемикання теми
   .theme_switcher {
     background-color: transparent;
-    color: #fff;
+    color: var(--text-color); // 🔹 іконка змінює колір з темою
     border: none;
     padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    transition: color 0.3s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
+  // Кнопки мов
   .language_switcher_button {
     background-color: #28a745;
     border: none;
@@ -80,6 +93,7 @@
     padding: 4px 8px;
     cursor: pointer;
     font-size: 10px;
+    transition: background-color 0.3s ease;
 
     &:hover {
       background-color: #40b822;
@@ -91,7 +105,7 @@
   }
 }
 
-// Бургер-меню
+// === БУРГЕР-МЕНЮ ===
 .burger_menu {
   background-color: transparent;
   border: none;
@@ -101,9 +115,10 @@
     justify-content: center;
     align-items: center;
     stroke-width: 2px;
-    stroke: #c7c7c7;
+    stroke: var(--text-color); // 🔹 колір ліній бургер-меню змінюється з темою
     width: 18px;
     height: 20px;
+    transition: stroke 0.3s ease;
 
     @media screen and (min-width: 768px) {
       margin-left: 20px;
@@ -117,22 +132,25 @@
   }
 }
 
-// Додаткові стилі навігації для десктопу
+// === ДОДАТКОВІ СТИЛІ НАВІГАЦІЇ ДЛЯ ДЕСКТОПУ ===
 @media screen and (min-width: 1280px) {
   .navigation {
     display: flex;
-    // justify-content: space-around;
     gap: 10px;
     align-items: center;
-    // flex: 1;
 
     .ul_navigation_li {
       font-weight: 500;
       font-size: 16px;
       line-height: 1.6;
-      color: #c7c7c7;
+      color: var(--text-color); // 🔹 меню теж змінює колір
       padding: 10px;
-      white-space: nowrap; //забороняє тексту переноситись
+      white-space: nowrap; // забороняє перенос тексту
+      transition: color 0.3s ease;
+
+      a:hover {
+        color: var(--accent-color); // 🔹 підсвітка при наведенні
+      }
     }
   }
 }

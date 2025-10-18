@@ -1,26 +1,35 @@
 .capabilities {
-  padding: 24px 0px;
+  padding: 24px 0;
   font-family: "Bebas Neue", sans-serif;
-  color: #fff;
+  color: var(--text-color); // 🔹 текст підлаштовується під тему
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
+  background-color: var(--bg-color); // 🔹 фон змінюється разом із темою
 
   .container {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    padding: 0px 16px;
+    padding: 0 16px;
     gap: 12px;
     text-align: left;
     align-items: flex-start;
+
     @media screen and (min-width: 1280px) {
       flex-direction: row;
-      padding: 0px 30px;
+      padding: 0 30px;
     }
   }
+
   .capabilities_h {
     font-weight: 400;
     font-size: 43px;
     line-height: 1;
     letter-spacing: -0.02em;
+    color: var(--text-color); // 🔹 заголовок залежить від теми
+    transition: color 0.3s ease;
+
     @media screen and (min-width: 1280px) {
       flex: 1;
       padding: 10px;
@@ -33,12 +42,17 @@
     flex: 1;
     padding: 10px;
   }
+
   .capabilities_p {
     font-weight: 400;
     font-size: 16px;
     line-height: 1.6;
-    color: #c7c7c7;
+    color: var(--text-color); // 🔹 текст залежить від теми
+    opacity: 0.8; // трохи світліший для підзаголовків
     margin-bottom: 12px;
+    transition:
+      color 0.3s ease,
+      opacity 0.3s ease;
   }
 }
 
@@ -58,17 +72,19 @@
     font-size: 14px;
     line-height: 1;
     text-transform: uppercase;
-    color: #fff;
-    border: 1px solid #484848;
+    color: var(--text-color); // 🔹 колір тексту змінюється з темою
+    border: 1px solid rgba(72, 72, 72, 0.5); // 🔹 межа адаптується під фон
     border-radius: 100px;
     padding: 16px 24px;
+    transition:
+      color 0.3s ease,
+      border-color 0.3s ease;
   }
 }
 
-// планшет
-
+// ПЛАНШЕТ
 @media (min-width: 768px) {
   .capabilities {
-    padding: 40px 0px;
+    padding: 40px 0;
   }
 }

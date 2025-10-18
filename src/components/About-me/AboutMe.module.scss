@@ -1,26 +1,35 @@
 .aboutme {
-  padding: 24px 0px;
+  padding: 24px 0;
+  background-color: var(--bg-color); // 🔹 фон змінюється разом із темою
+  color: var(--text-color); // 🔹 колір тексту залежить від теми
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+
   .container {
     display: flex;
     flex-direction: column;
     gap: 12px;
     justify-content: center;
     margin: 0 auto;
-    color: #fff;
-    padding: 0px 16px;
+    padding: 0 16px;
     gap: 8px;
-    // max-width: 375px;
+
     @media screen and (min-width: 1280px) {
       padding: 0 30px;
       flex-direction: row;
     }
   }
+
   .about_me_h {
     text-align: left;
     margin-bottom: 4px;
     font-weight: 400;
     font-size: 57px;
     line-height: 1;
+    color: var(--text-color); // 🔹 заголовок теж змінює колір із темою
+    transition: color 0.3s ease;
+
     @media screen and (min-width: 1280px) {
       flex: 1;
     }
@@ -31,18 +40,28 @@
   @media screen and (min-width: 1280px) {
     flex: 1;
   }
+
   .about_me_p {
     font-weight: 500;
     font-size: 24px;
     line-height: 1.4;
     margin-bottom: 28px;
+    color: var(--text-color); // 🔹 основний текст залежить від теми
+    transition: color 0.3s ease;
   }
+
   .about_me_p_two {
     font-weight: 400;
     font-size: 16px;
     line-height: 1.6;
-    color: #c7c7c7;
+    color: var(
+      --text-color
+    ); // 🔹 замість #c7c7c7 використовуємо динамічний колір
+    opacity: 0.8; // 🔹 трохи світліший від основного тексту
     margin-bottom: 28px;
+    transition:
+      color 0.3s ease,
+      opacity 0.3s ease;
   }
 }
 
@@ -51,6 +70,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+
   .about_me_button {
     display: flex;
     align-items: center;
@@ -62,8 +82,17 @@
     font-size: 14px;
     line-height: 1;
     text-transform: uppercase;
-    color: #0a0a0a;
-    background-color: #d3e97a;
+    color: var(--bg-color); // 🔹 текст контрастний до фону
+    background-color: var(
+      --accent-color
+    ); // 🔹 акцентна кнопка працює в обох темах
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+
+    &:hover {
+      opacity: 0.85;
+    }
   }
 
   .about_me_a {
@@ -74,18 +103,23 @@
     align-items: center;
     justify-content: center;
     background-color: transparent;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
 
     .about_me_svg_link {
-      fill: #d3e97a;
+      fill: var(--accent-color); // 🔹 іконка змінює колір залежно від теми
+      transition: fill 0.3s ease;
     }
   }
 }
 
-// планшет
-
+// === ПЛАНШЕТНА ВЕРСІЯ ===
 @media (min-width: 768px) {
   .aboutme {
-    padding: 40px 0px;
+    padding: 40px 0;
   }
 
   .button_a_a {

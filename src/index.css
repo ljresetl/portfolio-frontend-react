@@ -69,11 +69,35 @@ body {
   color: #c7c7c7;
   letter-spacing: 0.02em;
   background-color: #0a0a0a;
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 
   font-weight: 400;
   font-size: 28px;
   line-height: 1;
   letter-spacing: -0.01em;
   color: #c7c7c7;
+}
+
+/* === ГЛОБАЛЬНІ ЗМІННІ ДЛЯ ТЕМИ === */
+
+:root {
+  /* Світла тема за замовчуванням */
+  --bg-color: #ffffff;
+  --text-color: #1b1a1a;
+  --accent-color: #00ff95;
+  transition: all 0.3s ease;
+}
+
+body.dark {
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --accent-color: #1cce6f;
+}
+
+body.light {
+  --bg-color: #ffffff;
+  --text-color: #1b1a1a;
+  --accent-color: #2d8d35;
 }

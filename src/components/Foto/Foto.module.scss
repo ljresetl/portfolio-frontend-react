@@ -1,27 +1,35 @@
 .foto {
-  padding: 24px 0px;
+  padding: 24px 0;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
+  background-color: var(--bg-color); // 🔹 фон змінюється разом із темою
+
   .container {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px; // залишаємо останнє значення gap
     justify-content: center;
     margin: 0 auto;
-    color: #fff;
-    padding: 0px 16px;
-    gap: 8px;
-    // max-width: 375px;
+    color: var(--text-color); // 🔹 колір тексту залежить від теми
+    padding: 0 16px;
+    transition: color 0.3s ease;
+
     @media screen and (min-width: 1280px) {
-      padding: 0px 30px;
+      padding: 0 30px;
       flex-direction: row;
     }
   }
+
   .my_foto {
     border-radius: 8px;
     width: 100%;
     flex: 1;
   }
+
   .about_me_text {
     display: none;
+
     @media screen and (min-width: 1280px) {
       display: flex;
       flex: 1;
@@ -29,28 +37,32 @@
       gap: 30px;
       padding: 10px;
     }
+
+    .about_me_text_h {
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 1.4;
+      margin-bottom: 28px;
+      color: var(--text-color); // 🔹 залежить від теми
+      transition: color 0.3s ease;
+    }
+
+    .about_me_text_p {
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 1.6;
+      color: var(--text-color); // 🔹 залежить від теми
+      opacity: 0.8; // трохи світліше для підпунктів
+      transition:
+        color 0.3s ease,
+        opacity 0.3s ease;
+    }
   }
 }
 
+// Планшет
 @media (min-width: 768px) {
   .foto {
-    padding: 40px 0px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .about_me_text_h {
-    font-weight: 700;
-    font-size: 28px;
-    line-height: 1.4;
-    margin-bottom: 28px;
-    color: #fff;
-  }
-
-  .about_me_text_p {
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 1.6;
-    color: #c7c7c7;
+    padding: 40px 0;
   }
 }
