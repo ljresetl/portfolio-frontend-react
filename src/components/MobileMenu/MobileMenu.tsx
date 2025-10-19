@@ -1,71 +1,54 @@
-import React from "react"; 
-// Імпортуємо React, щоб створювати компоненти
-
-import styles from "./MobileMenu.module.scss"; 
-// Імпортуємо SCSS-модуль для стилізації компоненту
+import React from "react";
+import styles from "./MobileMenu.module.scss";
+import { useLanguage } from "../../useLanguage";
 
 interface MobileMenuProps {
-  isOpen: boolean; 
-  // Пропс, який визначає чи меню відкрито
-  onClose: () => void; 
-  // Пропс - функція для закриття меню
+  isOpen: boolean;
+  onClose: () => void;
 }
 
-const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => { 
-  // Створюємо функціональний компонент з типізацією через TypeScript
+const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
+  const { t } = useLanguage();
+
   return (
     <div className={`${styles.mobile_menu} ${isOpen ? styles.open : ""}`}>
-    {/* 
-      Контейнер мобільного меню:
-      - завжди має клас styles.mobile_menu
-      - якщо isOpen === true, додається styles.open для показу
-    */}
-      
       {/* Кнопка закриття меню */}
       <div className={styles.mobile_menu_btn}>
-      {/* Контейнер кнопки закриття, позиціювання через SCSS */}
         <button
-          className={styles.close_mobile_menu} 
-          // Клас для стилізації кнопки "✕"
-          onClick={onClose} 
-          // При кліку викликаємо пропс onClose
-          aria-label="Закрити меню" 
-          // Додаємо доступність для скрінрідерів
+          className={styles.close_mobile_menu}
+          onClick={onClose}
+          aria-label={t("navCloseMenu") || "Закрити меню"}
         >
           ✕
-          {/* Символ хрестика для закриття */}
         </button>
       </div>
 
       {/* Список пунктів меню */}
       <ul className={styles.mobile_menu_list}>
-      {/* Список пунктів меню з вертикальним відображенням */}
         <li>
           <a href="#about" onClick={onClose}>
-          {/* Клікабельний пункт, при кліку закриває меню */}
-            Про мене
+            {t("navAbout")}
           </a>
         </li>
         <li>
           <a href="#capabilities" onClick={onClose}>
-            Досвід
+            {t("navExperience")}
           </a>
         </li>
         <li>
           <a href="#portfolio" onClick={onClose}>
-            Портфоліо
+            {t("navPortfolio")}
           </a>
         </li>
         <li>
           <a href="#connect" onClick={onClose}>
-            Контакти
+            {t("navConnect")}
           </a>
         </li>
       </ul>
 
       {/* Соцмережі */}
       <div className={styles.connect_svg_mobile}>
-      {/* Контейнер для блоків з іконками соцмереж */}
         <a
           href="https://www.linkedin.com/in/vitalii-baranov-222439377"
           target="_blank"
@@ -73,10 +56,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
           aria-label="LinkedIn"
         >
           <svg width="32" height="32" className={styles.about_me_svg_link_connect}>
-            <use href="./images/icons.svg#icon-linkendin" className={styles.use_connect}></use>
-            {/* Іконка LinkedIn */}
+            <use href="./images/icons.svg#icon-linkendin"></use>
           </svg>
         </a>
+
         <a
           href="https://github.com/ljresetl"
           target="_blank"
@@ -84,10 +67,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
           aria-label="GitHub"
         >
           <svg width="32" height="32" className={styles.about_me_svg_link_connect}>
-            <use href="./images/icons.svg#icon-github" className={styles.use_connect}></use>
-            {/* Іконка GitHub */}
+            <use href="./images/icons.svg#icon-github"></use>
           </svg>
         </a>
+
         <a
           href="https://www.instagram.com/ljresetl/"
           target="_blank"
@@ -95,8 +78,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
           aria-label="Instagram"
         >
           <svg width="32" height="32" className={styles.about_me_svg_link_connect}>
-            <use href="./images/icons.svg#icon-instagram" className={styles.use_connect}></use>
-            {/* Іконка Instagram */}
+            <use href="./images/icons.svg#icon-instagram"></use>
           </svg>
         </a>
       </div>
@@ -104,5 +86,4 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
   );
 };
 
-export default MobileMenu; 
-// Експортуємо компонент, щоб його можна було імпортувати в Header
+export default MobileMenu;

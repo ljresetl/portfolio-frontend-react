@@ -1,19 +1,22 @@
 import React from "react";
-import styles from "./Connect.module.scss"; // <-- підключення SCSS-модуля
+import styles from "./Connect.module.scss";
+import { useLanguage } from "../../useLanguage";
 
 const Connect: React.FC = () => {
+  const { t } = useLanguage(); // ✅ підключено переклад
+
   return (
     <section id="connect" className={styles.connect}>
       <div className={styles.container}>
         {/* Ліва частина */}
         <div className={styles.connect_container_one}>
-          <h3 className={styles.connect_container_one_h} data-i18n="navСonnect">
-            Зв'язок
+          <h3 className={styles.connect_container_one_h}>
+            {t("navConnect")}
           </h3>
 
           {/* Перший параграф */}
           <p className={styles.connect_container_one_p}>
-            <span data-i18n="navСonnectP">Скажи привіт тут </span>
+            <span>{t("navConnectP")}</span>{" "}
             <a
               href="mailto:ljresetl@gmail.com"
               className={styles.connect_span_a}
@@ -24,14 +27,12 @@ const Connect: React.FC = () => {
 
           {/* Другий параграф */}
           <p className={styles.connect_container_one_p}>
-            <span data-i18n="navСonnectPtwo">
-              Для більшої інформації ось моє </span>
+            <span>{t("navConnectPtwo")}</span>{" "}
             <a
-              data-i18n="navСonnectR"
               className={styles.connect_span_resume}
               href="#resume"
             >
-              Резюме
+              {t("navConnectR")}
             </a>
           </p>
 
@@ -48,10 +49,7 @@ const Connect: React.FC = () => {
                 height="32"
                 className={styles.about_me_svg_link_connect}
               >
-                <use
-                  href="./images/icons.svg#icon-linkendin"
-                  className={styles.use_connect}
-                ></use>
+                <use href="./images/icons.svg#icon-linkendin"></use>
               </svg>
             </a>
 
@@ -66,10 +64,7 @@ const Connect: React.FC = () => {
                 height="32"
                 className={styles.about_me_svg_link_connect}
               >
-                <use
-                  href="./images/icons.svg#icon-github"
-                  className={styles.use_connect}
-                ></use>
+                <use href="./images/icons.svg#icon-github"></use>
               </svg>
             </a>
 
@@ -78,9 +73,12 @@ const Connect: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Telegram"
-              className={styles.about_me_a}
             >
-              <svg width="24" height="24" className={styles.about_me_svg_link_connect}>
+              <svg
+                width="24"
+                height="24"
+                className={styles.about_me_svg_link_connect}
+              >
                 <use href="./images/icons.svg#icon-telegram"></use>
               </svg>
             </a>
@@ -96,10 +94,7 @@ const Connect: React.FC = () => {
                 height="32"
                 className={styles.about_me_svg_link_connect}
               >
-                <use
-                  href="./images/icons.svg#icon-instagram"
-                  className={styles.use_connect}
-                ></use>
+                <use href="./images/icons.svg#icon-instagram"></use>
               </svg>
             </a>
           </div>
@@ -117,15 +112,14 @@ const Connect: React.FC = () => {
               type="hidden"
               name="_subject"
               className={styles.modal_input}
-              value="Нове повідомлення з сайту"
+              value={t("navConnectSubject")}
             />
 
             <label
               className={styles.modal_label}
               htmlFor="name"
-              data-i18n="navСonnectName"
             >
-              І'мя
+              {t("navConnectName")}
             </label>
             <input
               type="text"
@@ -133,31 +127,29 @@ const Connect: React.FC = () => {
               id="name"
               className={styles.modal_input}
               required
-              placeholder="Your name"
+              placeholder={t("navConnectPlaceholderName")}
             />
 
             <label
               className={styles.modal_label}
               htmlFor="phone"
-              data-i18n="navСonnectTelefon"
             >
-              Телефон
+              {t("navConnectTelefon")}
             </label>
             <input
               type="tel"
               name="phone"
               id="phone"
               className={styles.modal_input}
-              placeholder="+38 (0XX) XXX-XX-XX"
+              placeholder={t("navConnectPlaceholderPhone")}
               required
             />
 
             <label
               className={styles.modal_label}
               htmlFor="email"
-              data-i18n="navСonnectMail"
             >
-              Емейл
+              {t("navConnectMail")}
             </label>
             <input
               type="email"
@@ -165,29 +157,27 @@ const Connect: React.FC = () => {
               id="email"
               className={styles.modal_input}
               required
-              placeholder="your@email.com"
+              placeholder={t("navConnectPlaceholderEmail")}
             />
 
             <label
               className={styles.modal_label}
               htmlFor="message"
-              data-i18n="navСonnectComment"
             >
-              Коментар
+              {t("navConnectComment")}
             </label>
             <textarea
               id="message"
               name="message"
               className={styles.modal_textarea}
-              placeholder="Your message"
+              placeholder={t("navConnectPlaceholderMessage")}
             ></textarea>
 
             <button
               type="submit"
               className={styles.modal_button}
-              data-i18n="navСonnectButtonSend"
             >
-              Послати
+              {t("navConnectButtonSend")}
             </button>
           </form>
         </div>
