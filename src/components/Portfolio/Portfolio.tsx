@@ -6,17 +6,15 @@ import { useLanguage } from "../../useLanguage";
 const Portfolio: React.FC = () => {
   const { t } = useLanguage();
 
-  const [visibleCount, setVisibleCount] = useState(4);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1280);
+  const [visibleCount, setVisibleCount] = useState(window.innerWidth >= 1280 ? 3 : 4);
 
   useEffect(() => {
     const handleResize = () => {
       const isNowDesktop = window.innerWidth >= 1280;
       setIsDesktop(isNowDesktop);
-      setVisibleCount(isNowDesktop ? 3 : 4);
     };
 
-    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -28,10 +26,8 @@ const Portfolio: React.FC = () => {
   return (
     <section id="portfolio" className={styles.portfolio}>
       <div className={styles.container}>
-        {/* Заголовок */}
         <h3 className={styles.portfolio_h}>{t("navPortfolioH")}</h3>
 
-        {/* Список проектів */}
         <div className={styles.portfolio_list}>
           {projects.slice(0, visibleCount).map((project, index) => (
             <div key={index} className={styles.project_card}>
@@ -76,7 +72,6 @@ const Portfolio: React.FC = () => {
           ))}
         </div>
 
-        {/* Кнопка "Показати більше" */}
         {visibleCount < projects.length && (
           <button className={styles.button_loadmore} onClick={loadMore}>
             {t("navPortfolioLoadMore")}
