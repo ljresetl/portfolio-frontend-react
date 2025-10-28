@@ -45,19 +45,18 @@
 
   /* === Картка === */
   .project_card {
+    box-sizing: border-box; /* враховує padding у ширині */
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* кнопки внизу */
-    background-color: var(--card-bg-color); // 🔹 фон змінюється разом із темою
+    justify-content: space-between;
+    background-color: var(--card-bg-color);
     border-radius: 10px;
-    box-sizing: border-box;
     padding: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition:
       transform 0.25s ease,
       box-shadow 0.25s ease;
-    // color: var(--text-color);
-    height: 100%; /* однакова висота карток у гріді */
+    height: 100%;
 
     &:hover {
       transform: translateY(-4px);
@@ -113,6 +112,8 @@
       margin: 0;
       justify-content: flex-start;
       min-height: 40px;
+      // width: 100%;
+      max-width: 100%;
 
       li {
         display: flex;
@@ -131,6 +132,7 @@
       justify-content: space-around;
       gap: 10px;
       margin-top: auto;
+      max-width: 100%;
 
       .project_button {
         display: inline-block;
@@ -154,7 +156,7 @@
         }
 
         @media (min-width: 768px) {
-          padding: 8px 56px; /* ширші кнопки на планшетах+ */
+          padding: 8px 26px; /* ширші кнопки на планшетах+ */
         }
       }
     }

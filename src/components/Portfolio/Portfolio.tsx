@@ -38,7 +38,7 @@ const Portfolio: React.FC = () => {
                 src={project.image}
                 alt={t(project.title)}
                 width={300}
-                height={310}
+                height={300}
                 className={styles.project_image}
               />
 
