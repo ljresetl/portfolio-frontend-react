@@ -47,8 +47,12 @@ const Header: React.FC = () => {
     <header className={styles.header}>
       <div className={styles.container}>
         {/* === 🔗 ГОЛОВНА НАВІГАЦІЯ === */}
-        <nav className={styles.navigation} aria-label="Головне меню">
-          <p className={styles.logo}>FrontEnd</p>
+        <p className={styles.logo}>FrontEnd</p>
+
+        {/* === 🌙 ПЕРЕМИКАЧІ МОВИ ТА ТЕМИ === */}
+        <div className={styles.language_switcher}>
+          <nav className={styles.navigation} aria-label="Головне меню">
+          
           <ul className={styles.header_ul}>
             <li className={styles.ul_navigation_li}>
               <a href="#about">{t("navAbout")}</a>
@@ -64,9 +68,6 @@ const Header: React.FC = () => {
             </li>
           </ul>
         </nav>
-
-        {/* === 🌙 ПЕРЕМИКАЧІ МОВИ ТА ТЕМИ === */}
-        <div className={styles.language_switcher}>
           {/* Кнопки зміни мови */}
           <button
             className={styles.language_switcher_button}

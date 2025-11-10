@@ -23,7 +23,11 @@
     }
 
     @media screen and (min-width: 1280px) {
-      justify-content: space-around; // десктоп - рівномірний розподіл
+      // .container {
+      //   align-items: flex-end;
+      // }
+
+      justify-content: flex-end; // десктоп - рівномірний розподіл
       padding: 0 30px;
     }
   }
@@ -48,7 +52,8 @@
     display: flex;
     flex-direction: row;
     gap: 10px;
-    margin-left: 400px;
+    // align-items: floor($number: 22);
+    // margin-left: 400px;
   }
 }
 
