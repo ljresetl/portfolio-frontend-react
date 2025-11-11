@@ -75,10 +75,14 @@
 
   // Кнопка перемикання теми
   .theme_switcher {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
     background-color: transparent;
     color: var(--text-color); // 🔹 іконка змінює колір з темою
     border: none;
-    padding: 8px 12px;
+    // padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;

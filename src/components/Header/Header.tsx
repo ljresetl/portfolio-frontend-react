@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./Header.module.scss";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import { useLanguage } from "../../useLanguage";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 const Header: React.FC = () => {
   // === 🧭 СТАНИ КОМПОНЕНТА ===
@@ -99,7 +100,7 @@ const Header: React.FC = () => {
             aria-label="Змінити тему"
             type="button"
           >
-            {theme === "light" ? "🌙" : "☀️"}
+            {theme === "light" ? <FaMoon size={20} color="#161717ff" /> : <FaSun size={20} color="#d5eb0bff" />}
           </button>
         </div>
 
