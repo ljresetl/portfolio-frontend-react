@@ -8,22 +8,26 @@
   background-color: transparent; // прибирає фон
   outline: none; // прибирає рамку при фокусі
   border: none;
+  //   color: black;
 
   &:hover {
     transform: scale(1.08);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    // box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     background-color: transparent;
+    color: black;
   }
 
   .label {
     margin-top: 0.5rem;
     font-size: 0.9rem;
-    color: #ccc;
+    color: #868181;
     transition: color 0.3s ease;
+    // color: black;
   }
 
   &:hover .label {
     color: #fff; // ще світліше при наведенні
     background-color: transparent;
+    color: black;
   }
 }
