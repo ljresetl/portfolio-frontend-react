@@ -88,3 +88,10 @@
     padding: 40px 0;
   }
 }
+
+.capabilities_skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}

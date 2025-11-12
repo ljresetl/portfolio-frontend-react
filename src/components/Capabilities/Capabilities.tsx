@@ -1,9 +1,20 @@
 import React from "react";
 import styles from "./Capabilities.module.scss";
 import { useLanguage } from "../../useLanguage";
+import SkillCircle from "./SkillCircle/SkillCircle";
 
 const Capabilities: React.FC = () => {
-  const { t } = useLanguage(); // ✅ підключення перекладу
+  const { t } = useLanguage();
+
+  const skills = [
+    { label: t("skillHTML"), level: 80 },
+    { label: t("skillCSS"), level: 75 },
+    { label: t("skillJS"), level: 40 },
+    { label: t("skillFigma"), level: 70 },
+    { label: t("skillVite"), level: 55 },
+    { label: t("skillReact"), level: 45 },
+    { label: t("skillTS"), level: 40 },
+  ];
 
   return (
     <section id="capabilities" className={styles.capabilities}>
@@ -17,15 +28,11 @@ const Capabilities: React.FC = () => {
             {t("navCapabilitiesP")}
           </p>
 
-          <ul className={styles.capabilities_ul}>
-            <li className={styles.capabilities_li}>{t("skillHTML")}</li>
-            <li className={styles.capabilities_li}>{t("skillCSS")}</li>
-            <li className={styles.capabilities_li}>{t("skillJS")}</li>
-            <li className={styles.capabilities_li}>{t("skillFigma")}</li>
-            <li className={styles.capabilities_li}>{t("skillVite")}</li>
-            <li className={styles.capabilities_li}>{t("skillReact")}</li>
-            <li className={styles.capabilities_li}>{t("skillTS")}</li>
-          </ul>
+          <div className={styles.capabilities_skills}>
+            {skills.map((skill, index) => (
+              <SkillCircle key={index} label={skill.label} level={skill.level} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
