@@ -5,6 +5,7 @@
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
+  background-color: transparent;
 
   &:hover {
     transform: scale(1.08);
@@ -20,5 +21,6 @@
 
   &:hover .label {
     color: #fff; // ще світліше при наведенні
+    background-color: transparent;
   }
 }
