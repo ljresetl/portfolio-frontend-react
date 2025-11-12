@@ -135,7 +135,9 @@
       max-width: 100%;
 
       .project_button {
-        display: inline-block;
+        display: inline-flex; /* змінено з inline-block */
+        justify-content: center; /* горизонтальне вирівнювання */
+        align-items: center; /* вертикальне вирівнювання */
         padding: 8px 36px;
         background-color: #28a745;
         color: #fff;
@@ -148,6 +150,7 @@
         letter-spacing: 0.5px;
         transition: background-color 0.3s ease;
         cursor: pointer;
+        text-align: center; /* на випадок переносу тексту */
 
         &:hover,
         &:focus {
