@@ -18,10 +18,10 @@ const SkillCircle: React.FC<SkillCircleProps> = ({ label, level }) => {
         value={level}
         text={`${level}%`}
         styles={buildStyles({
-          textColor: "#1f1d1dff",
-          pathColor: level > 70 ? "#4caf50" : level > 40 ? "#ff9800" : "#f44336",
-          trailColor: "#eee",
-        })}
+  textColor: "var(--text-color)", // ← тепер використовує змінну теми
+  pathColor: level > 70 ? "#4caf50" : level > 40 ? "#ff9800" : "#f44336",
+  trailColor: "#eee",
+})}
       />
       <div className={styles.label}>{label}</div>
     </div>

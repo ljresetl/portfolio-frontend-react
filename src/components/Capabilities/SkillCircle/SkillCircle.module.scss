@@ -5,29 +5,26 @@
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
-  background-color: transparent; // прибирає фон
-  outline: none; // прибирає рамку при фокусі
+  background-color: transparent;
+  outline: none;
   border: none;
-  //   color: black;
+  color: var(--text-color); // основний текстовий колір з теми
 
   &:hover {
     transform: scale(1.08);
-    // box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     background-color: transparent;
-    color: black;
+    color: var(--accent-color); // акцент при наведенні
   }
 
   .label {
     margin-top: 0.5rem;
     font-size: 0.9rem;
-    color: #868181;
+    color: var(--text-color); // використовує змінну теми
     transition: color 0.3s ease;
-    // color: black;
   }
 
   &:hover .label {
-    color: #fff; // ще світліше при наведенні
+    color: var(--accent-color); // акцент при наведенні
     background-color: transparent;
-    color: black;
   }
 }
