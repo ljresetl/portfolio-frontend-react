@@ -7,40 +7,25 @@
     <!-- Адаптивність для мобільних пристроїв -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- 🔍 SEO: заголовок сторінки -->
+    <!-- 🔍 SEO -->
     <title>Junior Frontend Developer Portfolio | Vitalii Baranov</title>
-
-    <!-- Опис для пошукових систем -->
     <meta
       name="description"
       content="Modern frontend developer portfolio: React, TypeScript, responsive layout, UX/UI design, and creative web solutions."
     />
-
-    <!-- Вказівка для пошукових ботів: індексувати сторінку та переходити за посиланнями -->
     <meta name="robots" content="index, follow" />
-
-    <!-- Автор сторінки -->
     <meta name="author" content="Vitalii Baranov" />
-
-    <!-- Канонічна URL-адреса сторінки (уникає дублювання) -->
     <link
       rel="canonical"
       href="https://portfolio-frontend-react-flax.vercel.app/"
     />
 
-    <!-- 🌟 Favicon: основна іконка сайту -->
+    <!-- 🌟 Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png?v=2" />
-
-    <!-- Альтернативна іконка -->
-    <link rel="alternate icon" type="image/png" href="/favicon_alt.png?v=2" />
-
-    <!-- Іконка для мобільних пристроїв Apple -->
     <link rel="apple-touch-icon" href="/favicon.png" />
-
-    <!-- Колір теми для мобільних браузерів -->
     <meta name="theme-color" content="#0a0a0a" />
 
-    <!-- 📱 Open Graph: мета-теги для соцмереж -->
+    <!-- 📱 Open Graph -->
     <meta
       property="og:title"
       content="Junior Frontend Developer Portfolio | Vitalii Baranov"
@@ -56,7 +41,7 @@
       content="https://portfolio-frontend-react-flax.vercel.app/"
     />
 
-    <!-- 🖋️ Підключення шрифтів з Google Fonts -->
+    <!-- 🖋️ Шрифти Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -65,13 +50,16 @@
       media="all"
     />
 
-    <!-- Завантажити LCP-зображення відразу -->
-    <link rel="preload" as="image" href="/images/343.webp" />
+    <!-- Preload LCP-зображення -->
+    <link
+      rel="preload"
+      as="image"
+      href="/images/686.webp"
+      fetchpriority="high"
+    />
 
-    <!-- 🌐 Доступність та мовна локалізація -->
+    <!-- 🌐 Локалізація -->
     <meta http-equiv="Content-Language" content="uk" />
-
-    <!-- Альтернативні версії сторінки для різних мов -->
     <link
       rel="alternate"
       hreflang="uk"
@@ -87,20 +75,13 @@
       hreflang="cs"
       href="https://portfolio-frontend-react-flax.vercel.app/cz"
     />
-
-    <link
-      rel="preload"
-      as="image"
-      href="/images/686.webp"
-      fetchpriority="high"
-    />
   </head>
 
   <body>
     <!-- Кореневий контейнер для React -->
     <div id="root"></div>
 
-    <!-- Підключення головного JS-модуля (React) -->
-    <script type="module" src="/src/main.tsx"></script>
+    <!-- Підключення головного JS-бандла (збірка Vite/React) -->
+    <script type="module" src="/assets/index.js" defer></script>
   </body>
 </html>
