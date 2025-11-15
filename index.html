@@ -1,21 +1,59 @@
 <!doctype html>
 <html lang="uk">
   <head>
+    <!-- Кодування сторінки -->
     <meta charset="UTF-8" />
+
+    <!-- Адаптивність для мобільних пристроїв -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- SEO -->
+    <!-- 🔍 SEO: заголовок сторінки -->
     <title>Junior Frontend Developer Portfolio | Vitalii Baranov</title>
+
+    <!-- Опис для пошукових систем -->
     <meta
       name="description"
       content="Modern frontend developer portfolio: React, TypeScript, responsive layout, UX/UI design, and creative web solutions."
     />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="alternate icon" type="image/png" href="/favicon_2.png" />
+    <!-- Вказівка для пошукових ботів: індексувати сторінку та переходити за посиланнями -->
+    <meta name="robots" content="index, follow" />
 
-    <!-- Шрифти -->
+    <!-- Автор сторінки -->
+    <meta name="author" content="Vitalii Baranov" />
+
+    <!-- Канонічна URL-адреса сторінки (уникає дублювання) -->
+    <link rel="canonical" href="https://yourdomain.com/" />
+
+    <!-- 🌟 Favicon: основна іконка сайту -->
+    <link rel="icon" type="image/png" href="/favicon.png?v=2" />
+
+    <!-- Альтернативна іконка (може використовуватись браузерами або платформами) -->
+    <link rel="alternate icon" type="image/png" href="/favicon_alt.png?v=2" />
+
+    <!-- Іконка для мобільних пристроїв Apple -->
+    <link rel="apple-touch-icon" href="/favicon.png" />
+
+    <!-- Колір теми для мобільних браузерів -->
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <!-- 📱 Open Graph: мета-теги для соцмереж (Facebook, LinkedIn тощо) -->
+    <meta
+      property="og:title"
+      content="Junior Frontend Developer Portfolio | Vitalii Baranov"
+    />
+    <meta
+      property="og:description"
+      content="Explore my projects built with React, TypeScript, and HTML/CSS"
+    />
+    <meta property="og:image" content="/preview.png" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://portfolio-frontend-react-flax.vercel.app"
+    />
+
+    <!-- 🖋️ Підключення шрифтів з Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,21 +61,32 @@
       rel="stylesheet"
     />
 
-    <!-- Колір теми для мобільних -->
-    <meta name="theme-color" content="#0a0a0a" />
+    <!-- 🌐 Доступність та мовна локалізація -->
+    <meta http-equiv="Content-Language" content="uk" />
 
-    <!-- Open Graph (для соцмереж) -->
-    <meta property="og:title" content="Built with React" />
-    <meta
-      property="og:description"
-      content="Explore my projects built with React, TypeScript, and HTML/CSS"
+    <!-- Альтернативні версії сторінки для різних мов -->
+    <link
+      rel="alternate"
+      hreflang="uk"
+      href="https://portfolio-frontend-react-flax.vercel.app/ua"
     />
-    <meta property="og:image" content="/preview.png" />
-    <meta property="og:type" content="website" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://portfolio-frontend-react-flax.vercel.app/en"
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://portfolio-frontend-react-flax.vercel.app/cz"
+    />
   </head>
 
   <body>
+    <!-- Кореневий контейнер для React -->
     <div id="root"></div>
+
+    <!-- Підключення головного JS-модуля (React) -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
