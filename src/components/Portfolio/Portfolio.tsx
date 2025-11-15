@@ -25,7 +25,7 @@ const Portfolio: React.FC = () => {
   };
 
   return (
-    <Section>
+    <Section className={`${styles.blur_effect} ${styles.gradient_effect}`}>
       <section id="portfolio" className={styles.portfolio}>
         <div className={styles.container}>
           <h3 className={styles.portfolio_h}>{t("navPortfolioH")}</h3>

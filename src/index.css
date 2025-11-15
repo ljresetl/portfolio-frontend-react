@@ -107,3 +107,31 @@ body.light {
   --card-bg-color: #f5f5f5; /* фон карток для світлої теми */
   --li-bg-color: #ffffffbe;
 }
+
+.blur_effect {
+  filter: blur(10px);
+  transition: filter 1s ease;
+}
+
+.gradient_effect {
+  background: linear-gradient(270deg, #ff6ec4, #7873f5);
+  background-size: 400% 400%;
+  animation: gradientMove 8s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hover-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}

@@ -18,7 +18,7 @@ const Capabilities: React.FC = () => {
   ];
 
   return (
-    <Section>
+    <Section className={`${styles.blur_effect} ${styles.gradient_effect}`}>
       <section id="capabilities" className={styles.capabilities}>
         <div className={styles.container}>
           <h2 className={styles.capabilities_h}>

@@ -1,10 +1,15 @@
-// Плавний перехід  між секціями в React
 import { motion } from "framer-motion";
 import React from "react";
 
-const Section: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+interface SectionProps {
+  children: React.ReactNode;
+  className?: string; // 👈 додали className
+}
+
+const Section: React.FC<SectionProps> = ({ children, className }) => {
   return (
     <motion.div
+      className={className} // 👈 тепер можна передавати стилі
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}

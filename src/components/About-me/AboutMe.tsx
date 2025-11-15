@@ -7,7 +7,7 @@ const AboutMe: React.FC = () => {
   const { t } = useLanguage(); // ✅ тепер хук використовується
 
   return (
-   <Section>
+   <Section className={`${styles.blur_effect} ${styles.gradient_effect}`}>
       <section className={styles.aboutme} id="about">
         <div className={styles.container}>
           <h1 className={styles.about_me_h}>{t("navAboutMe")}</h1>

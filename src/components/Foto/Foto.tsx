@@ -7,7 +7,7 @@ const Foto: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <Section>
+    <Section className={`${styles.blur_effect} ${styles.gradient_effect}`}>
       <section className={styles.foto}>
         <div className={styles.container}>
           <img

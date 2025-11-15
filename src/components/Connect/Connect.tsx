@@ -7,7 +7,7 @@ const Connect: React.FC = () => {
   const { t } = useLanguage(); // ✅ підключено переклад
 
   return (
-   <Section>
+   <Section className={`${styles.blur_effect} ${styles.gradient_effect}`}>
       <section id="connect" className={styles.connect}>
         <div className={styles.container}>
           {/* Ліва частина */}

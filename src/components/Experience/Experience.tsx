@@ -7,7 +7,7 @@ const Experience: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <Section>
+    <Section className={`${styles.blur_effect} ${styles.gradient_effect}`}>
       <section className={styles.experience}>
         <div className={styles.container}>
           <h3 className={styles.experience_h}>
