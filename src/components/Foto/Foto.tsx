@@ -10,15 +10,16 @@ const Foto: React.FC = () => {
     <Section className={`${styles.blur_effect} ${styles.gradient_effect}`}>
       <section className={styles.foto}>
         <div className={styles.container}>
-          <img
-            srcSet="./images/343.webp 1x, ./images/686.webp 2x"
-            src="./images/343.webp"
-            width="343"
-            height="343"
-            alt="front-end"
-            className={styles.my_foto}
-            loading="lazy"
-          />
+<img
+  srcSet="./images/343.webp 1x, ./images/686.webp 2x"
+  sizes="(max-width: 768px) 100vw, 343px"
+  src="./images/343.webp"
+  width={343}
+  height={343}
+  alt="front-end"
+  className={styles.my_foto}
+  fetchPriority="high"
+/>
   
           <div className={styles.about_me_text}>
             <h1 className={styles.about_me_text_h}>
