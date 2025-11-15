@@ -4,7 +4,7 @@
     <!-- Кодування сторінки -->
     <meta charset="UTF-8" />
 
-    <!-- Адаптивність для мобільних пристроїв -->
+    <!-- Адаптивність -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- 🔍 SEO -->
@@ -41,13 +41,21 @@
       content="https://portfolio-frontend-react-flax.vercel.app/"
     />
 
-    <!-- 🖋️ Шрифти Google Fonts -->
+    <!-- 🖋️ Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap"
       rel="stylesheet"
       media="all"
+    />
+    <!-- Preload основних шрифтів -->
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/manrope/v20/xn7gYHE41....woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
 
     <!-- Preload LCP-зображення -->
@@ -75,13 +83,17 @@
       hreflang="cs"
       href="https://portfolio-frontend-react-flax.vercel.app/cz"
     />
+
+    <!-- Preload основного CSS -->
+    <link rel="preload" href="/assets/index-BABcVBQo.css" as="style" />
+    <link rel="stylesheet" href="/assets/index-BABcVBQo.css" />
   </head>
 
   <body>
-    <!-- Кореневий контейнер для React -->
+    <!-- Основний контейнер для React -->
     <div id="root"></div>
 
-    <!-- Підключення головного JS-бандла (збірка Vite/React) -->
-    <script type="module" src="/src/main.tsx" defer></script>
+    <!-- JS: Vite сам замінить шлях на /assets/...js при білді -->
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
