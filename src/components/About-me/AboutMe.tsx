@@ -20,8 +20,10 @@ const AboutMe: React.FC = () => {
                 href="/files/Vitalii_Baranov_Frontend_Developer.pdf"
                 download
                 className={styles.about_me_button}
+                aria-label="Завантажити резюме"
               >
                 {t("navButtonResume")}
+                
               </a>
   
               <a
@@ -29,6 +31,7 @@ const AboutMe: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.about_me_a}
+                aria-label="Посилання на LinkedIn"
               >
                 <svg width="24" height="24" className={styles.about_me_svg_link}>
                   <use href="./images/icons.svg#icon-linkendin"></use>
@@ -40,6 +43,7 @@ const AboutMe: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.about_me_a}
+                aria-label="Посилання на Telegram"
               >
                 <svg width="24" height="24" className={styles.about_me_svg_link}>
                   <use href="./images/icons.svg#icon-telegram"></use>
@@ -51,6 +55,7 @@ const AboutMe: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.about_me_a}
+                aria-label="Посилання на GitHub"
               >
                 <svg width="24" height="24" className={styles.about_me_svg_link}>
                   <use href="./images/icons.svg#icon-github"></use>

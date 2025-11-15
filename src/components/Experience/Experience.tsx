@@ -47,7 +47,8 @@ const Experience: React.FC = () => {
       href="https://ref.goit.global/5fdde04f" 
       className={styles.goit}
       target="_blank"
-      rel="noopener noreferrer"
+      rel="noopener noreferrer" 
+      aria-label="Посилання на GoIT"
     >
       GoIT
     </a>.

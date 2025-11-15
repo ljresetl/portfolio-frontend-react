@@ -56,16 +56,18 @@ const Header: React.FC = () => {
           
           <ul className={styles.header_ul}>
             <li className={styles.ul_navigation_li}>
-              <a href="#about">{t("navAbout")}</a>
+                <a href="#about" aria-label="Посилання на розділ Про мене">{t("navAbout")}
+                  
+              </a>
             </li>
             <li className={styles.ul_navigation_li}>
-              <a href="#capabilities">{t("navCapabilities")}</a>
+              <a href="#capabilities" aria-label="Посилання на розділ Можливості">{t("navCapabilities")}</a>
             </li>
             <li className={styles.ul_navigation_li}>
-              <a href="#portfolio">{t("navPortfolio")}</a>
+              <a href="#portfolio" aria-label="Посилання на розділ Портфоліо">{t("navPortfolio")}</a>
             </li>
             <li className={styles.ul_navigation_li}>
-              <a href="#connect">{t("navConnect")}</a>
+              <a href="#connect" aria-label="Посилання на розділ Зв'язок">{t("navConnect")}</a>
             </li>
           </ul>
         </nav>

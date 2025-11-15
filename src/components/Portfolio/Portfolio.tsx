@@ -57,7 +57,8 @@ const Portfolio: React.FC = () => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={styles.project_button}
+                    className={styles.project_button} 
+                    aria-label={t("navPortfolioAG")}  
                   >
                     {t("navPortfolioA")}
                   </a>
@@ -66,6 +67,7 @@ const Portfolio: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.project_button}
+                    aria-label={t("navPortfolioAW")}
                   >
                     {t("navPortfolioW")}
                   </a>

@@ -22,6 +22,7 @@ const Connect: React.FC = () => {
               <a
                 href="mailto:ljresetl@gmail.com"
                 className={styles.connect_span_a}
+                aria-label="Електронна пошта"
               >
                 ljresetl@gmail.com
               </a>
@@ -33,6 +34,7 @@ const Connect: React.FC = () => {
               <a
                 className={styles.connect_span_resume}
                 href="#resume"
+                aria-label="Посилання на резюме"
               >
                 {t("navConnectR")}
               </a>
@@ -44,7 +46,7 @@ const Connect: React.FC = () => {
                 href="https://www.linkedin.com/in/vitalii-baranov/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="LinkedIn"
+                aria-label="Посилання на LinkedIn"
               >
                 <svg
                   width="32"
@@ -59,7 +61,7 @@ const Connect: React.FC = () => {
                 href="https://github.com/ljresetl"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="GitHub"
+                aria-label="Посилання на GitHub"
               >
                 <svg
                   width="32"
@@ -74,7 +76,7 @@ const Connect: React.FC = () => {
                 href="https://t.me/ljresetl"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Telegram"
+                aria-label="Посилання на Telegram"
               >
                 <svg
                   width="24"
@@ -89,7 +91,7 @@ const Connect: React.FC = () => {
                 href="https://www.instagram.com/ljresetl/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram"
+                aria-label="Посилання на Instagram"
               >
                 <svg
                   width="32"
