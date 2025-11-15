@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Capabilities.module.scss";
 import { useLanguage } from "../../useLanguage";
 import SkillCircle from "./SkillCircle/SkillCircle";
+import Section from "../Section";
 
 const Capabilities: React.FC = () => {
   const { t } = useLanguage();
@@ -17,25 +18,27 @@ const Capabilities: React.FC = () => {
   ];
 
   return (
-    <section id="capabilities" className={styles.capabilities}>
-      <div className={styles.container}>
-        <h2 className={styles.capabilities_h}>
-          {t("navCapabilitiesH")}
-        </h2>
-
-        <div className={styles.capabilities_right}>
-          <p className={styles.capabilities_p}>
-            {t("navCapabilitiesP")}
-          </p>
-
-          <div className={styles.capabilities_skills}>
-            {skills.map((skill, index) => (
-              <SkillCircle key={index} label={skill.label} level={skill.level} />
-            ))}
+    <Section>
+      <section id="capabilities" className={styles.capabilities}>
+        <div className={styles.container}>
+          <h2 className={styles.capabilities_h}>
+            {t("navCapabilitiesH")}
+          </h2>
+  
+          <div className={styles.capabilities_right}>
+            <p className={styles.capabilities_p}>
+              {t("navCapabilitiesP")}
+            </p>
+  
+            <div className={styles.capabilities_skills}>
+              {skills.map((skill, index) => (
+                <SkillCircle key={index} label={skill.label} level={skill.level} />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </Section>
   );
 };
 
