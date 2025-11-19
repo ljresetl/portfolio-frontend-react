@@ -7,6 +7,18 @@ export interface TranslationKeys {
 export const translations: Record<Lang, TranslationKeys> = {
   ua: {
     // Навігація та секції
+    // переклад компоненту погоди
+    
+  weatherTitle: "Погода вашого регіону",
+  weatherLoading: "Завантаження...",
+  weatherErrorNoKey: "API ключ не знайдено. Додайте його у .env",
+  weatherErrorApi: "Помилка при отриманні даних погоди",
+  weatherCity: "Місто",
+  weatherTemp: "Температура",
+  weatherConditions: "Умови",
+    weatherWind: "Вітер",
+    weatherFallbackCity: "Прага",
+    // переклад компоненту погоди завершено
     navExperience: "Мої навички",
     navConnectP: "Скажи привіт тут",
     navConnectPtwo: "Для більшої інформації ось моє",
@@ -104,6 +116,17 @@ export const translations: Record<Lang, TranslationKeys> = {
 
   en: {
     // Navigation & sections
+    // translation of the weather component
+      weatherTitle: "Weather in your region",
+  weatherLoading: "Loading...",
+  weatherErrorNoKey: "API key not found. Add it in .env",
+  weatherErrorApi: "Error fetching weather data",
+  weatherCity: "City",
+  weatherTemp: "Temperature",
+  weatherConditions: "Conditions",
+    weatherWind: "Wind",
+    weatherFallbackCity: "Prague",
+   // translation of the weather component finished
     navExperience: "My skills",
     navConnectP: "Say hello here",
     navConnectPtwo: "For more information, here is my",
@@ -201,6 +224,17 @@ export const translations: Record<Lang, TranslationKeys> = {
 
   cz: {
     // Navigace a sekce
+    // překlad komponenty počasí
+      weatherTitle: "Počasí ve vašem regionu",
+  weatherLoading: "Načítání...",
+  weatherErrorNoKey: "API klíč nebyl nalezen. Přidejte jej do .env",
+  weatherErrorApi: "Chyba při získávání dat o počasí",
+  weatherCity: "Město",
+  weatherTemp: "Teplota",
+  weatherConditions: "Podmínky",
+    weatherWind: "Vítr",
+    weatherFallbackCity: "Praha",
+   // překlad komponenty počasí dokončen
     navExperience: "Mé dovednosti",
     navConnectP: "Řekni ahoj zde",
     navConnectPtwo: "Pro více informací zde je mé",

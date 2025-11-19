@@ -9,11 +9,13 @@ import Portfolio from "../Portfolio/Portfolio";
 import Connect from "../Connect/Connect";
 import Footer from "../Footer/Footer";
 import "../App/App.module.scss";
+import WeatherBlock from "../WeatherBlock/WeatherBlock";
 
 const App: React.FC = () => {
   return (
     <LanguageProvider>
       <Header />
+      <WeatherBlock />
       <AboutMe />
       <Foto />
       <Capabilities />
