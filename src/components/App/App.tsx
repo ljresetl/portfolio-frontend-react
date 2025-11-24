@@ -10,19 +10,23 @@ import Connect from "../Connect/Connect";
 import Footer from "../Footer/Footer";
 import "../App/App.module.scss";
 import WeatherBlock from "../WeatherBlock/WeatherBlock";
+import styles from "../App/App.module.scss";
+
 
 const App: React.FC = () => {
   return (
     <LanguageProvider>
-      <Header />
-      <WeatherBlock />
-      <AboutMe />
-      <Foto />
-      <Capabilities />
-      <Experience />
-      <Portfolio />
-      <Connect />
-      <Footer />
+      <div className={styles.appBackground}>
+        <Header />
+        <WeatherBlock />
+        <AboutMe />
+        <Foto />
+        <Capabilities />
+        <Experience />
+        <Portfolio />
+        <Connect />
+        <Footer />
+      </div>
     </LanguageProvider>
   );
 };

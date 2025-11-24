@@ -8,7 +8,8 @@ export const translations: Record<Lang, TranslationKeys> = {
   ua: {
     // Навігація та секції
     // переклад компоненту погоди
-
+    weatherExplainLocation: "Щоб показати погоду у вашому місті, дозвольте доступ до геолокації.",
+    weatherGetLocation: "Отримати моє місцезнаходження",
      weatherTitleQ: "Погода",
     weatherConditionsQ: "Умови",
     haze: "Димка",
@@ -127,6 +128,8 @@ export const translations: Record<Lang, TranslationKeys> = {
   en: {
     // Navigation & sections
     // translation of the weather component
+    weatherExplainLocation: "To show the weather in your city, please allow access to your location.",
+    weatherGetLocation: "Get my location",
         weatherTitleQ: "Weather",
     weatherConditionsQ: "Conditions",
     haze: "Haze",
@@ -245,6 +248,8 @@ export const translations: Record<Lang, TranslationKeys> = {
   cz: {
     // Navigace a sekce
     // překlad komponenty počasí
+    weatherExplainLocation: "Chcete-li zobrazit počasí ve vašem městě, povolte přístup k poloze.",
+    weatherGetLocation: "Získat moji polohu",
         weatherTitleQ: "Počasí",
     weatherConditionsQ: "Podmínky",
     haze: "Opar",

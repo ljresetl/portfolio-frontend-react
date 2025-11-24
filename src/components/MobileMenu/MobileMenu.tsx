@@ -1,47 +1,76 @@
+// Імпорт React для створення компонентів
 import React from "react";
+
+// Імпорт локальних стилів з SCSS-модуля
 import styles from "./MobileMenu.module.scss";
+
+// Імпорт кастомного хука для багатомовності
+// useLanguage повертає функцію t(), яка використовується для перекладу текстів
 import { useLanguage } from "../../useLanguage";
 
+// Оголошення інтерфейсу пропсів для компонента MobileMenu
 interface MobileMenuProps {
-  isOpen: boolean;
-  onClose: () => void;
+  isOpen: boolean;      // чи відкрите меню
+  onClose: () => void;  // функція для закриття меню
 }
 
+// Функціональний компонент MobileMenu
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
+  // Виклик хука useLanguage. Деструктуризація повертає функцію t()
+  // t("ключ") повертає перекладений текст для заданого ключа
   const { t } = useLanguage();
 
+  // JSX-розмітка компонента
   return (
+    // Головний контейнер меню. Якщо isOpen === true, додається клас styles.open
     <div className={`${styles.mobile_menu} ${isOpen ? styles.open : ""}`}>
+      
       {/* Кнопка закриття меню */}
       <div className={styles.mobile_menu_btn}>
         <button
           className={styles.close_mobile_menu}
-          onClick={onClose}
-          aria-label={t("navCloseMenu") || "Закрити меню"}
+          onClick={onClose} // викликає функцію закриття меню
+          aria-label={t("navCloseMenu") || "Закрити меню"} // текст для доступності
         >
-          ✕
+          ✕ {/* Символ хрестика */}
         </button>
       </div>
 
       {/* Список пунктів меню */}
       <ul className={styles.mobile_menu_list}>
         <li>
-          <a href="#about" onClick={onClose} aria-label="Посилання на розділ Про мене">
+          <a 
+            href="#about" 
+            onClick={onClose} // закриває меню після кліку
+            aria-label="Посилання на розділ Про мене"
+          >
             {t("navAbout")} 
           </a>
         </li>
         <li>
-          <a href="#capabilities" onClick={onClose} aria-label="Посилання на розділ Можливості">
-            {t("navExperience")}
+          <a 
+            href="#capabilities" 
+            onClick={onClose} 
+            aria-label="Посилання на розділ Можливості"
+          >
+            {t("navExperience")} {/* тут використовується ключ для досвіду */}
           </a>
         </li>
         <li>
-          <a href="#portfolio" onClick={onClose} aria-label="Посилання на розділ Портфоліо">
+          <a 
+            href="#portfolio" 
+            onClick={onClose} 
+            aria-label="Посилання на розділ Портфоліо"
+          >
             {t("navPortfolio")}
           </a>
         </li>
         <li>
-          <a href="#connect" onClick={onClose} aria-label="Посилання на розділ Зв'язок">
+          <a 
+            href="#connect" 
+            onClick={onClose} 
+            aria-label="Посилання на розділ Зв'язок"
+          >
             {t("navConnect")}
           </a>
         </li>
@@ -49,6 +78,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
       {/* Соцмережі */}
       <div className={styles.connect_svg_mobile}>
+        
+        {/* LinkedIn */}
         <a
           href="https://www.linkedin.com/in/vitalii-baranov-222439377"
           target="_blank"
@@ -60,6 +91,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
           </svg>
         </a>
 
+        {/* GitHub */}
         <a
           href="https://github.com/ljresetl"
           target="_blank"
@@ -71,6 +103,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
           </svg>
         </a>
 
+        {/* Instagram */}
         <a
           href="https://www.instagram.com/ljresetl/"
           target="_blank"
@@ -86,4 +119,5 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
   );
 };
 
+// Експорт компонента, щоб його можна було використати в Header.tsx
 export default MobileMenu;

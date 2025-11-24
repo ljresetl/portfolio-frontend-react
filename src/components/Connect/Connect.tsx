@@ -1,26 +1,46 @@
+// Імпорт React для створення компонентів
 import React from "react";
+
+// Імпорт локальних стилів з SCSS-модуля
 import styles from "./Connect.module.scss";
+
+// Імпорт кастомного хука для багатомовності
+// useLanguage повертає функцію t(), яка використовується для перекладу текстів
 import { useLanguage } from "../../useLanguage";
+
+// Імпорт компонента Section — обгортка для секцій сторінки, яка додає стилі та ефекти (blur, gradient)
 import Section from "../Section";
 
+// Оголошення функціонального компонента Connect
 const Connect: React.FC = () => {
+  // Виклик хука useLanguage. Деструктуризація повертає функцію t()
+  // t("ключ") повертає перекладений текст для заданого ключа
   const { t } = useLanguage(); // ✅ підключено переклад
 
+  // JSX-розмітка компонента
   return (
-   <Section className={`${styles.blur_effect} ${styles.gradient_effect}`}>
+    // Обгортка Section додає стилі blur_effect та gradient_effect
+    <Section className={`${styles.blur_effect} ${styles.gradient_effect}`}>
+      
+      {/* Семантичний тег <section> для блоку "Контакти" */}
       <section id="connect" className={styles.connect}>
+        
+        {/* Контейнер для вирівнювання контенту */}
         <div className={styles.container}>
-          {/* Ліва частина */}
+          
+          {/* Ліва частина секції — заголовок, текст і соцмережі */}
           <div className={styles.connect_container_one}>
+            
+            {/* Заголовок секції */}
             <h3 className={styles.connect_container_one_h}>
               {t("navConnect")}
             </h3>
   
-            {/* Перший параграф */}
+            {/* Перший параграф — контакт через email */}
             <p className={styles.connect_container_one_p}>
               <span>{t("navConnectP")}</span>{" "}
               <a
-                href="mailto:ljresetl@gmail.com"
+                href="mailto:ljresetl@gmail.com" // відкриває поштовий клієнт
                 className={styles.connect_span_a}
                 aria-label="Електронна пошта"
               >
@@ -28,90 +48,82 @@ const Connect: React.FC = () => {
               </a>
             </p>
   
-            {/* Другий параграф */}
+            {/* Другий параграф — посилання на резюме */}
             <p className={styles.connect_container_one_p}>
               <span>{t("navConnectPtwo")}</span>{" "}
               <a
                 className={styles.connect_span_resume}
-                href="#resume"
+                href="#resume" // скролить до блоку з id="resume"
                 aria-label="Посилання на резюме"
               >
                 {t("navConnectR")}
               </a>
             </p>
   
-            {/* Соцмережі */}
+            {/* Соцмережі — набір іконок з посиланнями */}
             <div className={styles.connect_svg}>
+              
+              {/* LinkedIn */}
               <a
                 href="https://www.linkedin.com/in/vitalii-baranov/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Посилання на LinkedIn"
               >
-                <svg
-                  width="32"
-                  height="32"
-                  className={styles.about_me_svg_link_connect}
-                >
+                <svg width="32" height="32" className={styles.about_me_svg_link_connect}>
                   <use href="./images/icons.svg#icon-linkendin"></use>
                 </svg>
               </a>
   
+              {/* GitHub */}
               <a
                 href="https://github.com/ljresetl"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Посилання на GitHub"
               >
-                <svg
-                  width="32"
-                  height="32"
-                  className={styles.about_me_svg_link_connect}
-                >
+                <svg width="32" height="32" className={styles.about_me_svg_link_connect}>
                   <use href="./images/icons.svg#icon-github"></use>
                 </svg>
               </a>
   
+              {/* Telegram */}
               <a
                 href="https://t.me/ljresetl"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Посилання на Telegram"
               >
-                <svg
-                  width="24"
-                  height="24"
-                  className={styles.about_me_svg_link_connect}
-                >
+                <svg width="24" height="24" className={styles.about_me_svg_link_connect}>
                   <use href="./images/icons.svg#icon-telegram"></use>
                 </svg>
               </a>
   
+              {/* Instagram */}
               <a
                 href="https://www.instagram.com/ljresetl/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Посилання на Instagram"
               >
-                <svg
-                  width="32"
-                  height="32"
-                  className={styles.about_me_svg_link_connect}
-                >
+                <svg width="32" height="32" className={styles.about_me_svg_link_connect}>
                   <use href="./images/icons.svg#icon-instagram"></use>
                 </svg>
               </a>
             </div>
           </div>
   
-          {/* Права частина (форма) */}
+          {/* Права частина секції — форма для контакту */}
           <div className={styles.connect_container_two}>
+            
+            {/* Форма надсилає дані на Formspree */}
             <form
-              action="https://formspree.io/f/mzzggoog"
+              action="https://formspree.io/f/mzzggoog" // endpoint для обробки форм
               method="POST"
               className={styles.modal_form}
               id="contact-form"
             >
+              {/* Приховане поле для теми повідомлення */}
               <input
                 type="hidden"
                 name="_subject"
@@ -119,10 +131,8 @@ const Connect: React.FC = () => {
                 value={t("navConnectSubject")}
               />
   
-              <label
-                className={styles.modal_label}
-                htmlFor="name"
-              >
+              {/* Поле для імені */}
+              <label className={styles.modal_label} htmlFor="name">
                 {t("navConnectName")}
               </label>
               <input
@@ -134,10 +144,8 @@ const Connect: React.FC = () => {
                 placeholder={t("navConnectPlaceholderName")}
               />
   
-              <label
-                className={styles.modal_label}
-                htmlFor="phone"
-              >
+              {/* Поле для телефону */}
+              <label className={styles.modal_label} htmlFor="phone">
                 {t("navConnectTelefon")}
               </label>
               <input
@@ -149,10 +157,8 @@ const Connect: React.FC = () => {
                 required
               />
   
-              <label
-                className={styles.modal_label}
-                htmlFor="email"
-              >
+              {/* Поле для email */}
+              <label className={styles.modal_label} htmlFor="email">
                 {t("navConnectMail")}
               </label>
               <input
@@ -164,10 +170,8 @@ const Connect: React.FC = () => {
                 placeholder={t("navConnectPlaceholderEmail")}
               />
   
-              <label
-                className={styles.modal_label}
-                htmlFor="message"
-              >
+              {/* Поле для повідомлення */}
+              <label className={styles.modal_label} htmlFor="message">
                 {t("navConnectComment")}
               </label>
               <textarea
@@ -177,18 +181,17 @@ const Connect: React.FC = () => {
                 placeholder={t("navConnectPlaceholderMessage")}
               ></textarea>
   
-              <button
-                type="submit"
-                className={styles.modal_button}
-              >
+              {/* Кнопка відправки форми */}
+              <button type="submit" className={styles.modal_button}>
                 {t("navConnectButtonSend")}
               </button>
             </form>
           </div>
         </div>
       </section>
-   </Section>
+    </Section>
   );
 };
 
+// Експорт компонента, щоб його можна було використати в App.tsx
 export default Connect;

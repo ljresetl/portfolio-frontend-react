@@ -1,10 +1,18 @@
+// Експортуємо масив projects, який містить дані про всі проекти.
+// Кожен елемент масиву — це об’єкт з інформацією про один проект.
 export const projects = [
   {
+    // Ключ для перекладу назви проекту
     title: "projectKeyboardTitle",
+    // Ключ для перекладу опису проекту
     description: "projectKeyboardDescription",
+    // Шлях до зображення проекту
     image: "./images/-4.webp",
+    // Масив технологій, які використовувались у проекті
     technologies: ["HTML", "CSS", "JS"],
+    // Посилання на GitHub-репозиторій проекту
     github: "https://github.com/ljresetl/game-for-you",
+    // Посилання на живу версію проекту
     website: "https://game-for-you-tawny.vercel.app/",
   },
   {
