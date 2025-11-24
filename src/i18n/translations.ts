@@ -8,6 +8,7 @@ export const translations: Record<Lang, TranslationKeys> = {
   ua: {
     // Навігація та секції
     // переклад компоненту погоди
+    weatherErrorDenied: "Ви відхилили доступ до геолокації. Погода показана для запасного міста.",
     weatherExplainLocation: "Щоб показати погоду у вашому місті, дозвольте доступ до геолокації.",
     weatherGetLocation: "Отримати моє місцезнаходження",
      weatherTitleQ: "Погода",
@@ -128,6 +129,7 @@ export const translations: Record<Lang, TranslationKeys> = {
   en: {
     // Navigation & sections
     // translation of the weather component
+    weatherErrorDenied: "You denied access to location. Weather is shown for the fallback city.",
     weatherExplainLocation: "To show the weather in your city, please allow access to your location.",
     weatherGetLocation: "Get my location",
         weatherTitleQ: "Weather",
@@ -248,6 +250,7 @@ export const translations: Record<Lang, TranslationKeys> = {
   cz: {
     // Navigace a sekce
     // překlad komponenty počasí
+    weatherErrorDenied: "Odmítli jste přístup k poloze. Počasí je zobrazeno pro náhradní město.",
     weatherExplainLocation: "Chcete-li zobrazit počasí ve vašem městě, povolte přístup k poloze.",
     weatherGetLocation: "Získat moji polohu",
         weatherTitleQ: "Počasí",
