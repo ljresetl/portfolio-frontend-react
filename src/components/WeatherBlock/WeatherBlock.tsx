@@ -1,8 +1,19 @@
+// Імпорт основних бібліотек React
 import React, { useEffect, useState } from "react";
+
+// Імпорт axios для виконання HTTP-запитів
 import axios from "axios";
+
+// Імпорт стилів з SCSS-модуля
 import styles from "./WeatherBlock.module.scss";
+
+// Імпорт компонента Section — обгортка для секцій сторінки
 import Section from "../Section";
+
+// Імпорт кастомного хука для багатомовності
 import { useLanguage } from "../../useLanguage"; 
+
+// Імпорт іконок для відображення даних погоди
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { WiThermometer, WiCloud, WiStrongWind } from "react-icons/wi";
 
@@ -14,68 +25,72 @@ interface WeatherData {
   name: string; // назва міста
 }
 
+// Основний компонент WeatherBlock
 const WeatherBlock: React.FC = () => {
-  const { t } = useLanguage(); 
+  const { t } = useLanguage(); // отримуємо функцію перекладу t()
 
   // 🧭 СТАНИ
-  const [coords, setCoords] = useState<{ lat: number; lon: number } | null>(null); // координати
+  const [coords, setCoords] = useState<{ lat: number; lon: number } | null>(null); // координати користувача
   const [weather, setWeather] = useState<WeatherData | null>(null); // дані погоди
   const [loading, setLoading] = useState(false); // стан завантаження
-  const [error, setError] = useState<string | null>(null); // помилка
-  const [fallbackCity, setFallbackCity] = useState<string | null>("Прага"); // запасне місто
+  const [error, setError] = useState<string | null>(null); // повідомлення про помилку
+  const [fallbackCity, setFallbackCity] = useState<string | null>("Прага"); // запасне місто (за замовчуванням Прага)
   const [showNotice, setShowNotice] = useState(false); // показ повідомлення у кутку
 
-  // 🌦️ Запит до API тільки якщо є координати
+  // 🌦️ Виконуємо запит до API тільки якщо є координати
   useEffect(() => {
-    if (coords) {
-      const API_KEY = import.meta.env.VITE_WEATHER_KEY as string;
-      if (!API_KEY) {
-        setError(t("weatherErrorNoKey"));
+    if (coords) { // якщо координати встановлені
+      const API_KEY = import.meta.env.VITE_WEATHER_KEY as string; // ключ API з .env
+      if (!API_KEY) { // якщо ключа немає
+        setError(t("weatherErrorNoKey")); // показати помилку
         return;
       }
 
-      setLoading(true);
+      setLoading(true); // вмикаємо стан завантаження
+      // Формуємо URL для запиту до OpenWeather API
       const url = `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&units=metric&lang=en&appid=${API_KEY}`;
 
+      // Виконуємо запит
       axios
         .get<WeatherData>(url)
         .then((res) => {
-          setWeather(res.data);
-          setLoading(false);
+          setWeather(res.data); // зберігаємо дані погоди
+          setLoading(false); // вимикаємо стан завантаження
         })
         .catch(() => {
-          setError(t("weatherErrorApi"));
+          setError(t("weatherErrorApi")); // якщо сталася помилка
           setLoading(false);
         });
     }
-  }, [coords, t]);
+  }, [coords, t]); // залежності — координати та функція перекладу
 
   // 📍 Функція для отримання геолокації
   const requestLocation = () => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        // ✅ Якщо користувач дозволив
-        setCoords({ lat: position.coords.latitude, lon: position.coords.longitude });
-        setFallbackCity(null);
+        // ✅ Якщо користувач дозволив геолокацію
+        setCoords({ lat: position.coords.latitude, lon: position.coords.longitude }); // зберігаємо координати
+        setFallbackCity(null); // запасне місто не потрібне
         setShowNotice(false); // повідомлення не показуємо
       },
       () => {
-        // ❌ Якщо користувач відхилив
-        setCoords({ lat: 50.0755, lon: 14.4378 }); // Прага
-        setFallbackCity("Praha");
+        // ❌ Якщо користувач відхилив геолокацію
+        setCoords({ lat: 50.0755, lon: 14.4378 }); // координати Праги
+        setFallbackCity("Praha"); // fallback місто
         setShowNotice(true); // показати повідомлення
 
-        // ⏱️ Приховати повідомлення через 5 секунд
+        // ⏱️ Автоматично приховати повідомлення через 5 секунд
         setTimeout(() => setShowNotice(false), 5000);
       }
     );
   };
 
-  // 🧱 РЕНДЕР
+  // 🧱 РЕНДЕР КОМПОНЕНТА
   return (
     <Section className={`${styles.blur_effect} ${styles.gradient_effect}`}>
       <section className={styles.weather}>
         <div className={styles.container}>
+          {/* Заголовок секції */}
           <h2>{t("weatherTitle")}</h2>
 
           {/* Кнопка для отримання геолокації */}
@@ -85,7 +100,7 @@ const WeatherBlock: React.FC = () => {
             </button>
           )}
 
-          {/* Повідомлення у кутку */}
+          {/* Повідомлення у кутку (показується на кілька секунд) */}
           {showNotice && (
             <div className={styles.locationNotice}>
               <p>{t("weatherErrorDenied")}</p>
@@ -101,18 +116,22 @@ const WeatherBlock: React.FC = () => {
           {/* Дані погоди */}
           {weather && (
             <div className={styles.info}>
+              {/* Місто */}
               <p>
                 <FaMapMarkerAlt size={16} color="#256835" />{" "}
                 {t("weatherCity")}: {fallbackCity ? fallbackCity : weather.name}
               </p>
+              {/* Температура */}
               <p>
                 <WiThermometer size={18} color="#e63946" />{" "}
                 {t("weatherTemp")}: {weather.main.temp} °C
               </p>
+              {/* Умови погоди */}
               <p>
                 <WiCloud size={18} color="#457b9d" />{" "}
                 {t("weatherConditions")}: {t(weather.weather[0].description as string)}
               </p>
+              {/* Вітер */}
               <p>
                 <WiStrongWind size={18} color="#1d3557" />{" "}
                 {t("weatherWind")}: {weather.wind.speed} м/с
@@ -125,4 +144,5 @@ const WeatherBlock: React.FC = () => {
   );
 };
 
+// Експорт компонента для використання в інших частинах програми
 export default WeatherBlock;
