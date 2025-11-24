@@ -41,7 +41,8 @@ const WeatherBlock: React.FC = () => {
         return;
       }
 
-      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&units=metric&lang=uk&appid=${API_KEY}`;
+      // ⚠️ Використовуємо англійську мову для ключів погодних умов
+      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&units=metric&lang=en&appid=${API_KEY}`;
 
       axios
         .get<WeatherData>(url)
@@ -67,10 +68,10 @@ const WeatherBlock: React.FC = () => {
             <div className={styles.info}>
               <p>📍 {t("weatherCity")}: {fallbackCity ? fallbackCity : weather.name}</p>
               <p>🌡 {t("weatherTemp")}: {weather.main.temp} °C</p>
-              <p>☁️ {t("weatherConditions")}: {weather.weather[0].description}</p>
+              <p>☁️ {t("weatherConditions")}: {t(weather.weather[0].description as string)}</p>
               <p>💨 {t("weatherWind")}: {weather.wind.speed} м/с</p>
 
-              <WeatherIcon description={weather.weather[0].description} />
+              <WeatherIcon description={t(weather.weather[0].description as string)} />
             </div>
           )}
         </div>

@@ -8,7 +8,17 @@ export const translations: Record<Lang, TranslationKeys> = {
   ua: {
     // Навігація та секції
     // переклад компоненту погоди
-    
+
+     weatherTitleQ: "Погода",
+    weatherConditionsQ: "Умови",
+    haze: "Димка",
+    clouds: "Хмарно",
+    clear: "Ясно",
+    rain: "Дощ",
+    snow: "Сніг",
+    mist: "Туман",
+    fog: "Мгла",
+    thunderstorm: "Гроза",
   weatherTitle: "Погода вашого регіону",
   weatherLoading: "Завантаження...",
   weatherErrorNoKey: "API ключ не знайдено. Додайте його у .env",
@@ -117,6 +127,16 @@ export const translations: Record<Lang, TranslationKeys> = {
   en: {
     // Navigation & sections
     // translation of the weather component
+        weatherTitleQ: "Weather",
+    weatherConditionsQ: "Conditions",
+    haze: "Haze",
+    clouds: "Clouds",
+    clear: "Clear",
+    rain: "Rain",
+    snow: "Snow",
+    mist: "Mist",
+    fog: "Fog",
+    thunderstorm: "Thunderstorm",
       weatherTitle: "Weather in your region",
   weatherLoading: "Loading...",
   weatherErrorNoKey: "API key not found. Add it in .env",
@@ -225,6 +245,16 @@ export const translations: Record<Lang, TranslationKeys> = {
   cz: {
     // Navigace a sekce
     // překlad komponenty počasí
+        weatherTitleQ: "Počasí",
+    weatherConditionsQ: "Podmínky",
+    haze: "Opar",
+    clouds: "Oblačno",
+    clear: "Jasno",
+    rain: "Déšť",
+    snow: "Sníh",
+    mist: "Mlha",
+    fog: "Hustá mlha",
+    thunderstorm: "Bouřka",
       weatherTitle: "Počasí ve vašem regionu",
   weatherLoading: "Načítání...",
   weatherErrorNoKey: "API klíč nebyl nalezen. Přidejte jej do .env",
