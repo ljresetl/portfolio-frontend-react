@@ -34,58 +34,66 @@ const WeatherBlock: React.FC = () => {
   const [weather, setWeather] = useState<WeatherData | null>(null); // дані погоди
   const [loading, setLoading] = useState(false); // стан завантаження
   const [error, setError] = useState<string | null>(null); // повідомлення про помилку
-  const [fallbackCity, setFallbackCity] = useState<string | null>("Прага"); // запасне місто (за замовчуванням Прага)
+  const [fallbackCity, setFallbackCity] = useState<string | null>("Прага"); // запасне місто
   const [showNotice, setShowNotice] = useState(false); // показ повідомлення у кутку
 
   // 🌦️ Виконуємо запит до API тільки якщо є координати
   useEffect(() => {
-    if (coords) { // якщо координати встановлені
-      const API_KEY = import.meta.env.VITE_WEATHER_KEY as string; // ключ API з .env
-      if (!API_KEY) { // якщо ключа немає
-        setError(t("weatherErrorNoKey")); // показати помилку
+    if (coords) {
+      const API_KEY = import.meta.env.VITE_WEATHER_KEY as string;
+      if (!API_KEY) {
+        setError(t("weatherErrorNoKey"));
         return;
       }
 
-      setLoading(true); // вмикаємо стан завантаження
-      // Формуємо URL для запиту до OpenWeather API
+      setLoading(true);
       const url = `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&units=metric&lang=en&appid=${API_KEY}`;
 
-      // Виконуємо запит
       axios
         .get<WeatherData>(url)
         .then((res) => {
-          setWeather(res.data); // зберігаємо дані погоди
-          setLoading(false); // вимикаємо стан завантаження
+          console.log("✅ Отримано дані погоди:", res.data);
+          setWeather(res.data);
+          setLoading(false);
         })
-        .catch(() => {
-          setError(t("weatherErrorApi")); // якщо сталася помилка
+        .catch((err) => {
+          console.error("❌ Помилка при запиті до API:", err);
+          setError(t("weatherErrorApi"));
           setLoading(false);
         });
     }
-  }, [coords, t]); // залежності — координати та функція перекладу
+  }, [coords, t]);
 
   // 📍 Функція для отримання геолокації
   const requestLocation = () => {
+    console.log("📍 Запит на геолокацію...");
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        // ✅ Якщо користувач дозволив геолокацію
-        setCoords({ lat: position.coords.latitude, lon: position.coords.longitude }); // зберігаємо координати
-        setFallbackCity(null); // запасне місто не потрібне
-        setShowNotice(false); // повідомлення не показуємо
+        console.log("✅ Геолокація дозволена:", position.coords);
+        setCoords({ lat: position.coords.latitude, lon: position.coords.longitude });
+        setFallbackCity(null);
+        setShowNotice(false);
       },
-      () => {
-        // ❌ Якщо користувач відхилив геолокацію
-        setCoords(null); // координати не ставимо!
-        setFallbackCity("Praha"); // fallback місто
-        // одразу встановлюємо погоду для Праги як fallback (штучні дані, можна замінити на реальний запит)
+      (error) => {
+        console.warn("❌ Геолокація відхилена або помилка:", error);
+        if (error.code === 1) {
+          console.warn("⛔ PERMISSION_DENIED");
+        } else if (error.code === 2) {
+          console.warn("📡 POSITION_UNAVAILABLE");
+        } else if (error.code === 3) {
+          console.warn("⏱️ TIMEOUT");
+        }
+
+        setCoords(null);
+        setFallbackCity("Praha");
         setWeather({
-          main: { temp: 0 }, // тимчасове значення температури
-          weather: [{ description: "clear sky", icon: "" }], // умовний опис
-          wind: { speed: 0 }, // умовна швидкість вітру
-          name: "Praha" // fallback місто
+          main: { temp: 0 },
+          weather: [{ description: "clear sky", icon: "" }],
+          wind: { speed: 0 },
+          name: "Praha"
         });
-        setShowNotice(true); // показати повідомлення
-        setTimeout(() => setShowNotice(false), 5000); // ⏱️ Автоматично приховати повідомлення через 5 секунд
+        setShowNotice(true);
+        setTimeout(() => setShowNotice(false), 5000);
       }
     );
   };
@@ -95,48 +103,37 @@ const WeatherBlock: React.FC = () => {
     <Section className={`${styles.blur_effect} ${styles.gradient_effect}`}>
       <section className={styles.weather}>
         <div className={styles.container}>
-          {/* Заголовок секції */}
           <h2>{t("weatherTitle")}</h2>
 
-          {/* Кнопка для отримання геолокації */}
           {!coords && (
             <button onClick={requestLocation} className={styles.button}>
               {t("weatherGetLocation")}
             </button>
           )}
 
-          {/* Повідомлення у кутку (показується на кілька секунд) */}
           {showNotice && (
             <div className={styles.locationNotice}>
               <p>{t("weatherErrorDenied")}</p>
             </div>
           )}
 
-          {/* Стан завантаження */}
           {loading && <p>{t("weatherLoading")}</p>}
-
-          {/* Помилка */}
           {error && <p style={{ color: "red" }}>{error}</p>}
 
-          {/* Дані погоди */}
           {weather && (
             <div className={styles.info}>
-              {/* Місто */}
               <p>
                 <FaMapMarkerAlt size={16} color="#256835" />{" "}
                 {t("weatherCity")}: {fallbackCity ? fallbackCity : weather.name}
               </p>
-              {/* Температура */}
               <p>
                 <WiThermometer size={18} color="#e63946" />{" "}
                 {t("weatherTemp")}: {weather.main.temp} °C
               </p>
-              {/* Умови погоди */}
               <p>
                 <WiCloud size={18} color="#457b9d" />{" "}
                 {t("weatherConditions")}: {t(weather.weather[0].description as string)}
               </p>
-              {/* Вітер */}
               <p>
                 <WiStrongWind size={18} color="#1d3557" />{" "}
                 {t("weatherWind")}: {weather.wind.speed} м/с
@@ -149,5 +146,4 @@ const WeatherBlock: React.FC = () => {
   );
 };
 
-// Експорт компонента для використання в інших частинах програми
 export default WeatherBlock;
