@@ -4,13 +4,13 @@ import React, { useEffect, useState } from "react";
 // Імпорт axios для виконання HTTP-запитів
 import axios from "axios";
 
-// Імпорт стилів з SCSS-модуля
+// Імпорт стилів з SCSS-модуля (локальні стилі для компонента)
 import styles from "./WeatherBlock.module.scss";
 
-// Імпорт компонента Section — обгортка для секцій сторінки
+// Імпорт компонента Section — обгортка для секцій сторінки (додає ефекти та стилі)
 import Section from "../Section";
 
-// Імпорт кастомного хука для багатомовності
+// Імпорт кастомного хука для багатомовності (повертає функцію t() для перекладу)
 import { useLanguage } from "../../useLanguage"; 
 
 // Імпорт іконок для відображення даних погоди
@@ -75,12 +75,17 @@ const WeatherBlock: React.FC = () => {
       },
       () => {
         // ❌ Якщо користувач відхилив геолокацію
-        setCoords({ lat: 50.0755, lon: 14.4378 }); // координати Праги
+        setCoords(null); // координати не ставимо!
         setFallbackCity("Praha"); // fallback місто
+        // одразу встановлюємо погоду для Праги як fallback (штучні дані, можна замінити на реальний запит)
+        setWeather({
+          main: { temp: 0 }, // тимчасове значення температури
+          weather: [{ description: "clear sky", icon: "" }], // умовний опис
+          wind: { speed: 0 }, // умовна швидкість вітру
+          name: "Praha" // fallback місто
+        });
         setShowNotice(true); // показати повідомлення
-
-        // ⏱️ Автоматично приховати повідомлення через 5 секунд
-        setTimeout(() => setShowNotice(false), 5000);
+        setTimeout(() => setShowNotice(false), 5000); // ⏱️ Автоматично приховати повідомлення через 5 секунд
       }
     );
   };
