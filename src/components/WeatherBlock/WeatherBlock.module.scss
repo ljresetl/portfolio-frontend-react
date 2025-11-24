@@ -8,6 +8,8 @@
     background-color 0.3s ease,
     color 0.3s ease;
 
+  position: relative; // потрібно для абсолютного позиціонування повідомлення
+
   .container {
     display: flex;
     flex-direction: column;
@@ -41,7 +43,6 @@
       }
     }
 
-    /* ✅ Використання глобальних змінних для кнопки */
     .button {
       padding: 8px 16px;
       border: none;
@@ -62,6 +63,35 @@
       &:active {
         transform: scale(0.98);
       }
+    }
+  }
+
+  /* 🟨 Кутове повідомлення */
+  .locationNotice {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: var(--card-bg-color);
+    color: var(--text-color);
+    padding: 10px 14px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 13px;
+    line-height: 1.4;
+    max-width: 240px;
+    z-index: 10;
+    animation: fadeOut 5s forwards;
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
     }
   }
 
