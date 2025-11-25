@@ -1,149 +1,191 @@
-// Імпорт основних бібліотек React
-import React, { useEffect, useState } from "react";
-
-// Імпорт axios для виконання HTTP-запитів
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-
-// Імпорт стилів з SCSS-модуля (локальні стилі для компонента)
 import styles from "./WeatherBlock.module.scss";
+import { WiDaySunny, WiCloud, WiRain, WiSnow } from "react-icons/wi"; // 🔹 Іконки погоди з react-icons
 
-// Імпорт компонента Section — обгортка для секцій сторінки (додає ефекти та стилі)
-import Section from "../Section";
-
-// Імпорт кастомного хука для багатомовності (повертає функцію t() для перекладу)
-import { useLanguage } from "../../useLanguage"; 
-
-// Імпорт іконок для відображення даних погоди
-import { FaMapMarkerAlt } from "react-icons/fa";
-import { WiThermometer, WiCloud, WiStrongWind } from "react-icons/wi";
-
-// Інтерфейс для структури даних погоди з API
-interface WeatherData {
-  main: { temp: number }; // температура
-  weather: { description: string; icon: string }[]; // опис та іконка
-  wind: { speed: number }; // швидкість вітру
-  name: string; // назва міста
+// 🔹 Тип для міста з JSON
+interface City {
+  id: number;
+  name: string;
+  country: string;
+  cs?: string;
+  uk?: string;
 }
 
-// Основний компонент WeatherBlock
-const WeatherBlock: React.FC = () => {
-  const { t } = useLanguage(); // отримуємо функцію перекладу t()
+// 🔹 Тип для одного елемента прогнозу
+interface ForecastItem {
+  dt_txt: string; // дата та час прогнозу
+  main: { temp: number }; // температура
+  weather: { description: string; icon: string }[]; // опис та код іконки
+}
 
-  // 🧭 СТАНИ
-  const [coords, setCoords] = useState<{ lat: number; lon: number } | null>(null); // координати користувача
-  const [weather, setWeather] = useState<WeatherData | null>(null); // дані погоди
-  const [loading, setLoading] = useState(false); // стан завантаження
-  const [error, setError] = useState<string | null>(null); // повідомлення про помилку
-  const [fallbackCity, setFallbackCity] = useState<string | null>("Прага"); // запасне місто
-  const [showNotice, setShowNotice] = useState(false); // показ повідомлення у кутку
+// 🔹 Тип для відповіді від API
+interface ForecastResponse {
+  cod: string; // код відповіді (200 = успіх)
+  list: ForecastItem[]; // список прогнозів
+  city: { name: string }; // назва міста
+}
 
-  // 🌦️ Виконуємо запит до API тільки якщо є координати
+// 🔹 Тип для даних, які ми показуємо у тікері
+interface TickerDay {
+  date: string; // дата (форматована)
+  desc: string; // опис погоди
+  tmin: number; // мінімальна температура
+  tmax: number; // максимальна температура
+  icon: string; // код іконки (наприклад "10d")
+}
+
+const WeatherTicker: React.FC = () => {
+  // 🔹 API ключ із .env
+  const API_KEY = import.meta.env.VITE_WEATHER_KEY as string;
+
+  // 🔹 Стан для списку міст
+  const [cities, setCities] = useState<City[]>([]);
+  // 🔹 Поточне вибране місто
+  const [city, setCity] = useState("Prague");
+  // 🔹 Текст, який вводить користувач
+  const [query, setQuery] = useState("");
+  // 🔹 Підказки для автодоповнення
+  const [matches, setMatches] = useState<City[]>([]);
+  // 🔹 Прогноз на кілька днів
+  const [days, setDays] = useState<TickerDay[]>([]);
+  // 🔹 Клас для фону (clearBg, cloudBg, rainBg, snowBg)
+  const [bgClass, setBgClass] = useState("defaultBg");
+
+  // 🔹 Завантаження списку міст з GitHub
   useEffect(() => {
-    if (coords) {
-      const API_KEY = import.meta.env.VITE_WEATHER_KEY as string;
-      if (!API_KEY) {
-        setError(t("weatherErrorNoKey"));
-        return;
-      }
+    fetch("https://raw.githubusercontent.com/ljresetl/weather-cities/main/cities.json")
+      .then(res => res.json()) // перетворюємо відповідь у JSON
+      .then((data: City[]) => setCities(data)) // зберігаємо у стан
+      .catch(() => console.error("Не вдалося завантажити список міст"));
+  }, []);
 
-      setLoading(true);
-      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&units=metric&lang=en&appid=${API_KEY}`;
-
-      axios
-        .get<WeatherData>(url)
-        .then((res) => {
-          console.log("✅ Отримано дані погоди:", res.data);
-          setWeather(res.data);
-          setLoading(false);
-        })
-        .catch((err) => {
-          console.error("❌ Помилка при запиті до API:", err);
-          setError(t("weatherErrorApi"));
-          setLoading(false);
-        });
-    }
-  }, [coords, t]);
-
-  // 📍 Функція для отримання геолокації
-  const requestLocation = () => {
-    console.log("📍 Запит на геолокацію...");
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        console.log("✅ Геолокація дозволена:", position.coords);
-        setCoords({ lat: position.coords.latitude, lon: position.coords.longitude });
-        setFallbackCity(null);
-        setShowNotice(false);
-      },
-      (error) => {
-        console.warn("❌ Геолокація відхилена або помилка:", error);
-        if (error.code === 1) {
-          console.warn("⛔ PERMISSION_DENIED");
-        } else if (error.code === 2) {
-          console.warn("📡 POSITION_UNAVAILABLE");
-        } else if (error.code === 3) {
-          console.warn("⏱️ TIMEOUT");
-        }
-
-        setCoords(null);
-        setFallbackCity("Praha");
-        setWeather({
-          main: { temp: 0 },
-          weather: [{ description: "clear sky", icon: "" }],
-          wind: { speed: 0 },
-          name: "Praha"
-        });
-        setShowNotice(true);
-        setTimeout(() => setShowNotice(false), 5000);
-      }
-    );
+  // 🔹 Функція для вибору іконки залежно від коду погоди
+  const weatherIcon = (code: string) => {
+    if (code.includes("01")) return <WiDaySunny size={22} color="#facc15" />;
+    if (code.includes("02") || code.includes("03")) return <WiCloud size={22} color="#64748b" />;
+    if (code.includes("09") || code.includes("10")) return <WiRain size={22} color="#3b82f6" />;
+    if (code.includes("13")) return <WiSnow size={22} color="#60a5fa" />;
+    return <WiCloud size={22} color="#94a3b8" />;
   };
 
-  // 🧱 РЕНДЕР КОМПОНЕНТА
+  // 🔹 Завантаження погоди для вибраного міста
+  const getWeather = useCallback(async (selectedCity: string) => {
+    // Формуємо URL для OpenWeather API
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${selectedCity}&appid=${API_KEY}&units=metric&lang=en`;
+    try {
+      const res = await axios.get<ForecastResponse>(url); // робимо запит
+      if (res.data.cod === "200") {
+        // групуємо дані по датах
+        const grouped: Record<string, ForecastItem[]> = {};
+        res.data.list.forEach(item => {
+          const date = item.dt_txt.split(" ")[0]; // беремо тільки дату
+          if (!grouped[date]) grouped[date] = [];
+          grouped[date].push(item);
+        });
+
+        // беремо перші 5 днів
+        const next5 = Object.keys(grouped).slice(0, 5);
+        const result: TickerDay[] = next5.map(d => {
+          const items = grouped[d];
+          const temps = items.map(i => i.main.temp);
+          const tmin = Math.round(Math.min(...temps));
+          const tmax = Math.round(Math.max(...temps));
+          const first = items[0];
+          return {
+            date: new Date(d).toLocaleDateString("en-GB", { day: "2-digit", month: "short" }),
+            desc: first.weather[0].description,
+            tmin,
+            tmax,
+            icon: first.weather[0].icon
+          };
+        });
+
+        setDays(result); // зберігаємо прогноз у стан
+
+        // міняємо фон за першим днем
+        const code = result[0]?.icon || "";
+        if (code.includes("01")) setBgClass("clearBg");
+        else if (code.includes("02") || code.includes("03")) setBgClass("cloudBg");
+        else if (code.includes("09") || code.includes("10")) setBgClass("rainBg");
+        else if (code.includes("13")) setBgClass("snowBg");
+        else setBgClass("defaultBg");
+      }
+    } catch {
+      // якщо помилка — показуємо повідомлення
+      setDays([{ date: "—", desc: "Error loading forecast", tmin: 0, tmax: 0, icon: "01d" }]);
+    }
+  }, [API_KEY]);
+
+  // 🔹 Викликаємо getWeather при старті та зміні міста
+  useEffect(() => {
+    getWeather(city);
+  }, [city, getWeather]);
+
+  // 🔹 Автодоповнення: шукаємо міста по введеному тексту
+  useEffect(() => {
+    if (!query || query.trim().length < 2) {
+      setMatches([]);
+      return;
+    }
+    const q = query.toLowerCase();
+    const filtered = cities
+      .filter(c =>
+        c.name.toLowerCase().includes(q) ||
+        (c.cs && c.cs.toLowerCase().includes(q)) ||
+        (c.uk && c.uk.toLowerCase().includes(q))
+      )
+      .slice(0, 10); // показуємо максимум 10 варіантів
+    setMatches(filtered);
+  }, [query, cities]);
+
+  // 🔹 Обробка кліку по місту з автодоповнення
+  const handlePickCity = (c: City) => {
+    setCity(c.name); // змінюємо місто
+    setQuery(c.name); // вставляємо назву у поле вводу
+    setMatches([]); // очищаємо список підказок
+    getWeather(c.name); // завантажуємо прогноз
+  };
+
   return (
-    <Section className={`${styles.blur_effect} ${styles.gradient_effect}`}>
-      <section className={styles.weather}>
-        <div className={styles.container}>
-          <h2>{t("weatherTitle")}</h2>
+    <div className={`${styles.tickerWrapper} ${styles[bgClass]}`}>
+      {/* Поле пошуку міста */}
+      <div className={styles.citySearch}>
+        <input
+          type="text"
+          value={query} // значення поля
+          onChange={e => setQuery(e.target.value)} // оновлюємо query при вводі
+          placeholder="Enter city"
+          className={styles.cityInput}
+        />
+        {/* Показуємо список підказок */}
+        {matches.length > 0 && (
+          <ul className={styles.autocompleteList}>
+            {matches.map(c => (
+              <li key={c.id} onClick={() => handlePickCity(c)}>
+                {c.name}, {c.country}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
 
-          {!coords && (
-            <button onClick={requestLocation} className={styles.button}>
-              {t("weatherGetLocation")}
-            </button>
-          )}
-
-          {showNotice && (
-            <div className={styles.locationNotice}>
-              <p>{t("weatherErrorDenied")}</p>
-            </div>
-          )}
-
-          {loading && <p>{t("weatherLoading")}</p>}
-          {error && <p style={{ color: "red" }}>{error}</p>}
-
-          {weather && (
-            <div className={styles.info}>
-              <p>
-                <FaMapMarkerAlt size={16} color="#256835" />{" "}
-                {t("weatherCity")}: {fallbackCity ? fallbackCity : weather.name}
-              </p>
-              <p>
-                <WiThermometer size={18} color="#e63946" />{" "}
-                {t("weatherTemp")}: {weather.main.temp} °C
-              </p>
-              <p>
-                <WiCloud size={18} color="#457b9d" />{" "}
-                {t("weatherConditions")}: {t(weather.weather[0].description as string)}
-              </p>
-              <p>
-                <WiStrongWind size={18} color="#1d3557" />{" "}
-                {t("weatherWind")}: {weather.wind.speed} м/с
-              </p>
-            </div>
-          )}
+      {/* Бігучий рядок з прогнозом */}
+      <div className={styles.ticker}>
+        <div className={styles.tickerContent}>
+          <span className={styles.cityLabel}>{city}</span>
+          {days.map((d, idx) => (
+            <span key={idx} className={styles.dayChip}>
+              {weatherIcon(d.icon)} {/* показуємо іконку */}
+              <span className={styles.dayText}>
+                {d.date}: {d.desc}, {d.tmin}°/{d.tmax}°
+              </span>
+            </span>
+          ))}
         </div>
-      </section>
-    </Section>
+      </div>
+    </div>
   );
 };
 
-export default WeatherBlock;
+export default WeatherTicker;

@@ -1,139 +1,138 @@
-.weather {
+/* === Основний контейнер віджета === */
+.tickerWrapper {
+  display: flex; /* розташування пошуку та тікера в ряд */
+  align-items: center; /* вертикальне вирівнювання */
+  height: 20px; /* висота рядка */
+  background: var(--card-bg-color);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  padding: 0 8px;
+  position: relative; /* щоб список автодоповнення позиціонувався всередині */
+}
+
+/* === Блок пошуку міста === */
+.citySearch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* для абсолютного позиціонування списку */
+  flex: 0 0 200px; /* ширина блоку пошуку */
+
+  z-index: 10; /* поверх тікера */
+}
+
+/* Поле вводу для міста */
+.cityInput {
   width: 100%;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  padding: 12px 0;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
+  height: 100%;
+  padding: 0 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 
-  position: relative; // потрібно для абсолютного позиціонування повідомлення
-
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    padding: 0 16px;
+  &:focus {
+    outline: none;
+    border-color: #1d9871; /* синя рамка при фокусі */
   }
+}
 
-  h2 {
-    font-size: 20px;
-    color: var(--accent-color);
-  }
+/* === Список автодоповнення === */
+.autocompleteList {
+  position: absolute;
+  top: 42px; /* під полем вводу */
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  max-height: 180px;
+  overflow-y: auto;
+  z-index: 1000; /* поверх інших елементів */
 
-  .info {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: center;
-    text-align: center;
-
-    p {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      font-size: 14px;
-      line-height: 1.4;
-
-      svg {
-        flex-shrink: 0;
-      }
-    }
-  }
-
-  /* ✅ Кнопка винесена на верхній рівень (поза .info) */
-  .button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 6px;
-    background-color: var(--accent-color);
-    color: var(--bg-color);
-    font-size: 14px;
-    font-weight: 500;
+  li {
+    padding: 6px 8px;
     cursor: pointer;
-    transition:
-      filter 0.3s ease,
-      transform 0.2s ease;
+    font-size: 14px;
+    color: #0a0a0a;
 
     &:hover {
-      filter: brightness(90%);
-    }
-
-    &:active {
-      transform: scale(0.98);
+      background: #f1f5f9; /* підсвітка при наведенні */
     }
   }
+}
 
-  /* 🟨 Кутове повідомлення */
-  .locationNotice {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background-color: var(--card-bg-color);
-    color: var(--text-color);
-    padding: 10px 14px;
-    border-radius: 6px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    font-size: 13px;
-    line-height: 1.4;
-    max-width: 240px;
-    z-index: 10;
-    animation: fadeOut 5s forwards;
+/* === Контейнер тікера === */
+.ticker {
+  flex: 1; /* займає решту ширини */
+  overflow: hidden; /* приховує зайвий текст */
+  position: relative;
+}
+
+/* === Контент тікера (бігучий рядок) === */
+.tickerContent {
+  display: inline-flex; /* елементи йдуть в ряд */
+  align-items: center;
+  gap: 14px; /* відступи між днями */
+  white-space: nowrap; /* не переносити рядки */
+  padding-left: 100%; /* старт анімації справа */
+  animation: tickerMove 25s linear infinite;
+  font-size: 14px;
+  line-height: 40px;
+  // color: var(--text-color);
+  color: #000;
+}
+
+/* Назва міста у тікері */
+.cityLabel {
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+/* Один день прогнозу */
+.dayChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Іконка погоди */
+.icon {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+/* Текст прогнозу для дня */
+.dayText {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* === Анімація руху справа наліво === */
+@keyframes tickerMove {
+  from {
+    transform: translateX(0);
   }
-
-  @keyframes fadeOut {
-    0% {
-      opacity: 1;
-    }
-    80% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
+  to {
+    transform: translateX(-100%);
   }
+}
 
-  @media screen and (min-width: 768px) {
-    h2 {
-      font-size: 24px;
-    }
+.clearBg {
+  background: linear-gradient(to right, #87ceeb, #fefcea); /* сонячно */
+}
 
-    .info {
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
+.cloudBg {
+  background: linear-gradient(to right, #d7d2cc, #304352); /* хмарно */
+}
 
-      p {
-        font-size: 16px;
-      }
-    }
+.rainBg {
+  background: linear-gradient(to right, #4e54c8, #8f94fb); /* дощ */
+}
 
-    .button {
-      font-size: 15px;
-      padding: 10px 20px;
-    }
-  }
+.snowBg {
+  background: linear-gradient(to right, #e0eafc, #cfdef3); /* сніг */
+}
 
-  @media screen and (min-width: 1280px) {
-    h2 {
-      font-size: 28px;
-    }
-
-    .info {
-      gap: 30px;
-
-      p {
-        font-size: 18px;
-      }
-    }
-
-    .button {
-      font-size: 16px;
-      padding: 12px 24px;
-    }
-  }
+.defaultBg {
+  background: #f1f5f9;
 }
