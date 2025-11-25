@@ -29,28 +29,17 @@ const Foto: React.FC = () => {
         <div className={styles.container}>
           
           {/* Фото з використанням сучасних атрибутів для оптимізації */}
-          <img
-            // srcSet — вказує різні варіанти зображення для різних щільностей екрана
-            srcSet="./images/343.webp 1x, ./images/686.webp 2x"
-            
-            // sizes — описує, яке зображення використовувати залежно від ширини viewport
-            sizes="(max-width: 768px) 100vw, 343px"
-            
-            // src — основне зображення за замовчуванням
-            src="./images/343.webp"
-            
-            // width та height — розміри зображення
-            width={343}
-            height={343}
-            
-            // alt — альтернативний текст для доступності
-            alt="front-end"
-            
-            // className — стилі для фото
-            className={styles.my_foto}
-            
-            // fetchPriority="high" — браузер завантажує це зображення з високим пріоритетом
-          />
+<img
+  srcSet="./images/343.webp 1x, ./images/686.webp 2x"
+  sizes="(max-width: 768px) 100vw, 343px"
+  src="./images/343.webp"
+  width={343}
+  height={343}
+  alt="front-end"
+  loading="eager"
+  fetchPriority="high"   // ✅ тепер працює
+  className={styles.my_foto}
+/>
   
           {/* Блок з текстом "Про мене" */}
           <div className={styles.about_me_text}>
