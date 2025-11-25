@@ -15,9 +15,15 @@
   align-items: center;
   justify-content: center;
   position: relative; /* для абсолютного позиціонування списку */
-  flex: 0 0 200px; /* ширина блоку пошуку */
+  flex: 0 0 100px; /* ширина блоку пошуку */
 
   z-index: 10; /* поверх тікера */
+}
+
+@media screen and (min-width: 768px) {
+  .citySearch {
+    flex: 0 0 200px;
+  }
 }
 
 /* Поле вводу для міста */
