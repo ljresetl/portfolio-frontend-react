@@ -16,7 +16,7 @@
   justify-content: center;
   position: relative; /* для абсолютного позиціонування списку */
   flex: 0 0 100px; /* ширина блоку пошуку */
-
+  border: none;
   z-index: 10; /* поверх тікера */
 }
 
@@ -34,6 +34,7 @@
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  border: none;
 
   &:focus {
     outline: none;
