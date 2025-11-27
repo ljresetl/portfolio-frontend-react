@@ -1,0 +1,152 @@
+/* === Основний контейнер віджета === */
+.tickerWrapper {
+  display: flex; /* розташування пошуку та тікера в ряд */
+  align-items: center; /* вертикальне вирівнювання */
+  height: 20px; /* висота рядка */
+  background: var(--card-bg-color);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  padding: 0 8px;
+  position: relative; /* щоб список автодоповнення позиціонувався всередині */
+  color: var(--text-color); /* текст залежить від теми */
+}
+
+/* === Блок пошуку міста === */
+.citySearch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* для абсолютного позиціонування списку */
+  flex: 0 0 100px; /* ширина блоку пошуку */
+  border: none;
+  z-index: 10; /* поверх тікера */
+}
+
+@media screen and (min-width: 768px) {
+  .citySearch {
+    flex: 0 0 200px;
+  }
+}
+
+/* Поле вводу для міста */
+.cityInput {
+  width: 100%;
+  height: 100%;
+  padding: 0 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  border: none;
+  color: var(--text-color);
+  background: var(--bg-color);
+
+  &:focus {
+    outline: none;
+    border-color: var(--accent-color); /* рамка при фокусі */
+  }
+}
+
+/* === Список автодоповнення === */
+.autocompleteList {
+  position: absolute;
+  top: 42px; /* під полем вводу */
+  left: 0;
+  right: 0;
+  background: var(--bg-color);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  max-height: 180px;
+  overflow-y: auto;
+  z-index: 1000; /* поверх інших елементів */
+
+  li {
+    padding: 6px 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-color);
+    background: var(--li-bg-color);
+
+    &:hover {
+      background: #f1f5f9; /* підсвітка при наведенні */
+    }
+  }
+}
+
+/* === Контейнер тікера === */
+.ticker {
+  flex: 1; /* займає решту ширини */
+  overflow: hidden; /* приховує зайвий текст */
+  position: relative;
+}
+
+/* === Контент тікера (бігучий рядок) === */
+.tickerContent {
+  display: inline-flex; /* елементи йдуть в ряд */
+  align-items: center;
+  gap: 14px; /* відступи між днями */
+  white-space: nowrap; /* не переносити рядки */
+  padding-left: 100%; /* старт анімації справа */
+  animation: tickerMove 25s linear infinite;
+  font-size: 14px;
+  line-height: 40px;
+  color: var(--text-color); /* тепер залежить від теми */
+}
+
+/* Назва міста у тікері */
+.cityLabel {
+  font-weight: 700;
+  margin-right: 8px;
+  color: var(--text-color);
+}
+
+/* Один день прогнозу */
+.dayChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-color);
+}
+
+/* Іконка погоди */
+.icon {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+/* Текст прогнозу для дня */
+.dayText {
+  display: inline-block;
+  vertical-align: middle;
+  color: var(--text-color);
+}
+
+/* === Анімація руху справа наліво === */
+@keyframes tickerMove {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* === Фони для різної погоди === */
+.clearBg {
+  background: linear-gradient(to right, #87ceeb, #fefcea); /* сонячно */
+}
+
+.cloudBg {
+  background: linear-gradient(to right, #d7d2cc, #304352); /* хмарно */
+}
+
+.rainBg {
+  background: linear-gradient(to right, #4e54c8, #8f94fb); /* дощ */
+}
+
+.snowBg {
+  background: linear-gradient(to right, #e0eafc, #cfdef3); /* сніг */
+}
+
+.defaultBg {
+  background: #f1f5f9;
+}

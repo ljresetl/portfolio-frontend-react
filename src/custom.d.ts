@@ -12,3 +12,12 @@ declare module '*.scss' {
   // Тобто можна писати: import styles from "./App.module.scss";
   export default content;
 }
+
+// 🔹 Правильне розширення типів для <img>
+// declare global {
+//   namespace JSX {
+//     interface ImgHTMLAttributes<T> extends React.HTMLAttributes<T> {
+//       fetchpriority?: string;
+//     }
+//   }
+// }

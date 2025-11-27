@@ -11,6 +11,7 @@ import Footer from "../Footer/Footer";
 import "../App/App.module.scss";
 import WeatherBlock from "../WeatherBlock/WeatherBlock";
 import styles from "../App/App.module.scss";
+import CurrencyTicker from "../CurrencyTicker/CurrencyTicker";
 
 
 const App: React.FC = () => {
@@ -19,8 +20,10 @@ const App: React.FC = () => {
       <div className={styles.appBackground}>
         <Header />
         <WeatherBlock />
+        
         <AboutMe />
         <Foto />
+        <CurrencyTicker />
         <Capabilities />
         <Experience />
         <Portfolio />

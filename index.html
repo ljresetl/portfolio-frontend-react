@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="uk">
   <head>
-    <!-- Кодування сторінки -->
+    <!-- 📄 Кодування сторінки -->
     <meta charset="UTF-8" />
 
-    <!-- Адаптивність -->
+    <!-- 📱 Адаптивність -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- 🔍 SEO -->
@@ -25,7 +25,7 @@
     <link rel="apple-touch-icon" href="/favicon.png" />
     <meta name="theme-color" content="#0a0a0a" />
 
-    <!-- 📱 Open Graph -->
+    <!-- 📱 Open Graph (для соцмереж) -->
     <meta
       property="og:title"
       content="Junior Frontend Developer Portfolio | Vitalii Baranov"
@@ -41,7 +41,7 @@
       content="https://portfolio-frontend-react-flax.vercel.app/"
     />
 
-    <!-- Preload LCP-зображення -->
+    <!-- 🚀 Preload LCP-зображення -->
     <link
       rel="preload"
       as="image"
@@ -67,16 +67,24 @@
       href="https://portfolio-frontend-react-flax.vercel.app/cz"
     />
 
-    <!-- Preload основного CSS -->
+    <!-- 🎨 Підключення шрифту Manrope через Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- 🎨 Preload основного CSS -->
     <link rel="preload" href="/assets/index-BABcVBQo.css" as="style" />
     <link rel="stylesheet" href="/assets/index-BABcVBQo.css" />
   </head>
 
   <body>
-    <!-- Основний контейнер для React -->
+    <!-- ⚛️ Основний контейнер для React -->
     <div id="root"></div>
 
-    <!-- JS: Vite сам замінить шлях на /assets/...js при білді -->
+    <!-- ⚡ JS: Vite сам замінить шлях на /assets/...js при білді -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

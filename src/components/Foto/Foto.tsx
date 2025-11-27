@@ -36,8 +36,8 @@ const Foto: React.FC = () => {
   width={343}
   height={343}
   alt="front-end"
-  loading="eager"
-  fetchPriority="high"   // ✅ тепер працює
+            loading="eager"
+            decoding="auto"
   className={styles.my_foto}
 />
   
