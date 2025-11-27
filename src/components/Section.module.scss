@@ -1,0 +1,18 @@
+.section {
+  will-change: transform, opacity;
+}
+
+/* Початковий стан — прихований, знизу */
+.hidden {
+  opacity: 0;
+  transform: translateY(80px); // 👈 нижче, щоб було видно рух
+}
+
+/* Активний стан — плавно виїжджає вгору */
+.slideUp {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
+}
