@@ -1,0 +1,105 @@
+.sky {
+  position: fixed; /* поверх усієї сторінки */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none; /* щоб не блокувати кліки */
+  z-index: 9999; /* поверх усього контенту */
+}
+
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-shadow:
+    20vw 10vh white,
+    30vw 40vh white,
+    50vw 20vh white,
+    70vw 80vh white,
+    90vw 30vh white,
+    10vw 70vh white,
+    40vw 60vh white,
+    80vw 50vh white,
+    60vw 90vh white,
+    25vw 25vh white;
+  animation: twinkle 4s infinite alternate;
+}
+
+@keyframes twinkle {
+  from {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 🟨 Контейнер зірки */
+.shootingStar {
+  position: absolute;
+  top: -200px;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  /* позиція залежить від індекса */
+  left: calc(var(--i) * 10%);
+}
+
+/* ⭐ Іконка зірки */
+.core {
+  position: relative;
+  z-index: 2;
+  transform: translate(84px, 84px);
+}
+
+/* ⭐ Зірка */
+.starSvg {
+  width: 10px;
+  height: 10px;
+  display: block;
+  filter: drop-shadow(0 0 4px #add8e6); /* світло-синя тінь */
+  stroke: none;
+  fill: #add8e6; /* світло-синя заливка */
+}
+
+/* 🧵 Хвіст */
+.tail {
+  position: absolute;
+  width: 120px;
+  height: 2px;
+  top: 48px;
+  left: 46.6px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  clip-path: polygon(0% 40%, 100% 0%, 100% 100%, 0% 60%);
+  background: linear-gradient(
+    to right,
+    rgba(173, 216, 230, 0) 0%,
+    /* прозорий початок */ rgba(173, 216, 230, 0.7) 40%,
+    /* світло-синій середина */ #add8e6 100% /* світло-синій кінець */
+  );
+  filter: drop-shadow(0 0 4px #add8e6); /* світло-синя тінь */
+  z-index: 1;
+}
+
+/* 🧭 Анімація падіння з масштабуванням */
+@keyframes fall {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(275px, 55vh) scale(1.4);
+    opacity: 1;
+  }
+  80% {
+    transform: translate(440px, 90vh) scale(0.9);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(550px, 110vh) scale(0.6);
+    opacity: 0;
+  }
+}

@@ -12,6 +12,8 @@ import "../App/App.module.scss";
 import WeatherBlock from "../WeatherBlock/WeatherBlock";
 import styles from "../App/App.module.scss";
 import CurrencyTicker from "../CurrencyTicker/CurrencyTicker";
+// import EditableBlock from "../EditableBlock/EditableBlock";
+import StarsSky from "../hvezda/StarsSky";
 
 
 const App: React.FC = () => {
@@ -19,8 +21,9 @@ const App: React.FC = () => {
     <LanguageProvider>
       <div className={styles.appBackground}>
         <Header />
+        <StarsSky /> 
         <WeatherBlock />
-        
+        {/* <EditableBlock /> */}
         <AboutMe />
         <Foto />
         <CurrencyTicker />

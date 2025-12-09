@@ -90,6 +90,8 @@ body {
   --accent-color: #00ff95;
   transition: all 0.3s ease;
   --li-bg-color: #ffffffbe;
+  --color-star: #a18927; /* світла тема */
+  --color-tail: rgba(255, 255, 200, 0.7);
 }
 
 body.dark {
@@ -98,6 +100,8 @@ body.dark {
   --text-color: #ffffff;
   --accent-color: #1cce6f;
   --li-bg-color: #2b2828be;
+  --color-star: #fff8dc; /* темна тема */
+  --color-tail: rgba(173, 216, 230, 0.7); /* світло-блакитний хвіст */
 }
 
 body.light {
