@@ -1,113 +1,105 @@
-/* 1. КОНТЕЙНЕР НЕБА */
 .sky {
-  position: fixed; /* Завжди на місці при скролі */
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100vw; /* На всю ширину екрана */
-  height: 100vh; /* На всю висоту екрана */
-  overflow: hidden; /* Ховаємо зірки, що вилетіли за край */
-  pointer-events: none; /* Пропускає кліки крізь себе на кнопки сайту */
-  z-index: 9999; /* Найвищий шар (поверх усього) */
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 9999;
 }
 
-/* 2. МАЛЕНЬКІ СТАТИЧНІ ЗОРІ (ФОН) */
 .stars {
   position: absolute;
   width: 100%;
   height: 100%;
-  /* Кожна пара чисел (20vw 10vh) - це окрема зоря. VW - ширина, VH - висота */
   box-shadow:
-    20vw 10vh white,
-    30vw 40vh white,
-    50vw 20vh white,
-    70vw 80vh white,
-    90vw 30vh white,
-    10vw 70vh white,
-    40vw 60vh white,
-    80vw 50vh white,
-    60vw 90vh white,
-    25vw 25vh white;
-  animation: twinkle 4s infinite alternate; /* Мерехтіння */
+    10vw 20vh white,
+    30vw 10vh white,
+    50vw 40vh white,
+    70vw 20vh white,
+    90vw 50vh white,
+    15vw 70vh white,
+    45vw 80vh white,
+    85vw 10vh white,
+    65vw 60vh white,
+    25vw 90vh white;
+  animation: twinkle 4s infinite alternate;
 }
 
 @keyframes twinkle {
   from {
-    opacity: 0.6;
+    opacity: 0.5;
   }
   to {
     opacity: 1;
   }
 }
 
-/* 3. КОНТЕЙНЕР ПАДАЮЧОЇ ЗІРКИ */
 .shootingStar {
   position: absolute;
-  top: -200px; /* Починає за верхнім краєм екрана */
+  /* Початкова точка вище екрана */
+  top: -150px;
   animation-name: fall;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 
-  /* ТУТ МІНЯЙ МІСЦЕ ВИЛЬОТУ: */
-  /* * 30% - це відстань між ними, + 10% - зсув всієї групи вправо */
-  left: calc(var(--i) * 30% + 10%);
+  /* Рівномірний розподіл точок вильоту по горизонталі */
+  left: calc(var(--i) * (100% / var(--total)));
 }
 
-/* 4. ГОЛОВА ЗІРКИ (SVG) */
 .core {
   position: relative;
   z-index: 2;
-  /* ТУТ МІНЯЙ ПРИВ'ЯЗКУ ДО ХВОСТА: 
-     Ці цифри мають збігатися з кутом нахилу, щоб голова була на кінці хвоста */
-  transform: translate(84px, 84px);
+  /* Вирівнювання зірочки під кут 45 градусів до хвоста */
+  transform: translate(94px, 94px);
 }
 
 .starSvg {
-  width: 10px; /* ТУТ МІНЯЙ РОЗМІР ЗІРКИ */
+  width: 10px;
   height: 10px;
   display: block;
-  filter: drop-shadow(0 0 4px #add8e6); /* Сяйво навколо зірки */
-  fill: #add8e6; /* Колір зірки */
+  filter: drop-shadow(0 0 4px #add8e6);
+  fill: #add8e6;
 }
 
-/* 5. ХВІСТ (ШЛЕЙФ) */
 .tail {
   position: absolute;
-  width: 120px; /* ТУТ МІНЯЙ ДОВЖИНУ ХВОСТА */
-  height: 2px; /* ТУТ МІНЯЙ ТОВЩИНУ ХВОСТА */
+  width: 140px;
+  height: 2px;
   top: 48px;
   left: 46.6px;
-  /* Rotate(45deg) - хвіст має бути під тим же кутом, що й політ */
+  /* ПОВОРОТ ХВОСТА: 45 градусів, щоб він дивився назад від напрямку польоту */
   transform: translate(-50%, -50%) rotate(45deg);
-  /* Clip-path робить хвіст гострим на початку */
   clip-path: polygon(0% 40%, 100% 0%, 100% 100%, 0% 60%);
   background: linear-gradient(
     to right,
     rgba(173, 216, 230, 0) 0%,
-    /* Прозорий початок */ rgba(173, 216, 230, 0.7) 40%,
-    /* Напівпрозора середина */ #add8e6 100% /* Яскравий кінець біля голови */
+    rgba(173, 216, 230, 0.6) 30%,
+    #add8e6 100%
   );
   z-index: 1;
 }
 
-/* 6. АНІМАЦІЯ ПАДІННЯ (ТРАЄКТОРІЯ) */
+/* АНІМАЦІЯ ПОЛЬОТУ ПІД КУТОМ 45° */
 @keyframes fall {
   0% {
+    /* Початок руху */
     transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+  10% {
     opacity: 1;
   }
-  50% {
-    /* ТУТ МІНЯЙ КУТ ПАДІННЯ: 275px вправо, 55vh вниз */
-    transform: translate(275px, 55vh) scale(2);
+  90% {
     opacity: 1;
-  }
-  80% {
-    /* ТУТ МІНЯЙ ЗНИКНЕННЯ: зірка стає меншою та прозорішою */
-    transform: translate(440px, 90vh) scale(3);
-    opacity: 0.8;
   }
   100% {
-    /* КІНЦЕВА ТОЧКА: куди зірка долітає перед зникненням */
-    transform: translate(550px, 110vh) scale(4);
+    /* КУТ 45 ГРАДУСІВ: 
+       Ми летимо на 100% висоти екрана вниз (100vh) 
+       і на таку ж саму відстань вправо (100vh). 
+       Це створює ідеальну діагональ. */
+    transform: translate(100vh, 100vh) scale(1);
     opacity: 0;
   }
 }

@@ -1,41 +1,37 @@
 import React from "react";
-import starSvg from "./hvezda.svg"; // Імпорт зображення зірки (голова метеора)
-import styles from "./StarsSky.module.scss"; // Імпорт стилів модуля
+import starSvg from "./hvezda.svg"; 
+import styles from "./StarsSky.module.scss";
 
 const StarsSky: React.FC = () => {
+  const starsCount = 12; // Кількість зірок
+
   return (
-    // Головний контейнер для неба
     <div className={styles.sky}>
-      {/* Статичний шар зірок (можливо, фон) */}
+      {/* Фонові статичні зорі */}
       <div className={styles.stars}></div>
       
-      {/* Створюємо масив з 12 елементів і проходимо по ньому циклом */}
-      {Array.from({ length: 12 }).map((_, i) => {
-        
-        // Генеруємо випадкову тривалість анімації від 10 до 12 секунд
-        const randomDuration = (Math.random() * 5 + 1).toFixed(5); 
-        
-        // Генеруємо випадкову затримку перед початком анімації від 0 до 3 секунд
-        const randomDelay = (Math.random() * 5).toFixed(1); 
+      {Array.from({ length: starsCount }).map((_, i) => {
+        // Однакова швидкість для всіх для стабільного кута 45°
+        const fixedDuration = "8.0"; 
+        // Випадкова затримка, щоб вони не летіли одночасно
+        const randomDelay = (Math.random() * 8).toFixed(1); 
 
         return (
           <div
-            key={i} // Унікальний ключ для React (обов'язково в циклах)
-            className={styles.shootingStar} // Клас, що відповідає за рух зірки
+            key={i}
+            className={styles.shootingStar}
             style={
               {
-                "--i": i, // Передаємо індекс в CSS як змінну (для розрахунку позиції left)
-                animationDuration: `${randomDuration}s`, // Встановлюємо швидкість польоту
-                animationDelay: `${randomDelay}s`, // Встановлюємо затримку появи
+                "--i": i, 
+                "--total": starsCount,
+                animationDuration: `${fixedDuration}s`,
+                animationDelay: `${randomDelay}s`,
               } as React.CSSProperties
             }
           >
-            {/* "Голова" зірки, що падає */}
             <div className={styles.core}>
               <img src={starSvg} alt="star" className={styles.starSvg} />
             </div>
-            
-            {/* "Хвіст" (шлейф) зірки */}
             <div className={styles.tail}></div>
           </div>
         );
