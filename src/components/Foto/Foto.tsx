@@ -38,7 +38,6 @@ const Foto: React.FC = () => {
   alt="front-end"
             loading="eager"
             decoding="auto"
-            fetchPriority="high"
   className={styles.my_foto}
 />
   
