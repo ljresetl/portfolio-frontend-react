@@ -1,6 +1,14 @@
 // Експортуємо масив projects, який містить дані про всі проекти.
 // Кожен елемент масиву — це об’єкт з інформацією про один проект.
 export const projects = [
+    {
+    title: "projectAmondrexTitle",
+    description: "projectAmondrexDescription",
+    image: "./images/-5.webp",
+    technologies: ["React", "TypeScript", "JS"],
+    github: "https://github.com/ljresetl/fond-amondrex",
+    website: "https://www.amondrexcf.com/",
+  },
   {
     // Ключ для перекладу назви проекту
     title: "projectKeyboardTitle",

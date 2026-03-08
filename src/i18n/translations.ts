@@ -102,6 +102,8 @@ export const translations: Record<Lang, TranslationKeys> = {
     navPortfolioLoadMore: "Показати більше",
 
     // Проекти
+    projectAmondrexTitle: "Фонд Amondrex",
+    projectAmondrexDescription: "Опис: сайт для благодійного фонду Amondrex, створений з використанням React та TypeScript.",
     projectKeyboardTitle: "Гра на клавіатурі - Тест",
     projectKeyboardDescription: "Опис: інтерактивна веб-гра для тренування набору тексту на клавіатурі. Тестуй свою швидкість і точність у написанні.",
     projectMoviesTitle: "Пошук карток фільмів",
@@ -223,6 +225,8 @@ export const translations: Record<Lang, TranslationKeys> = {
     navPortfolioLoadMore: "Load more",
 
     // Projects
+    projectAmondrexTitle: "Amondrex Fund",
+    projectAmondrexDescription: "Description: a website for the Amondrex charity fund, created using React and TypeScript.",
     projectKeyboardTitle: "Keyboard game — Test",
     projectKeyboardDescription: "Description: an interactive web game for practicing typing. Test your speed and accuracy in writing.",
     projectMoviesTitle: "Movie card search",
@@ -344,6 +348,8 @@ export const translations: Record<Lang, TranslationKeys> = {
     navPortfolioLoadMore: "Zobrazit více",
 
     // Projekty
+    projectAmondrexTitle: "Fond Amondrex",
+    projectAmondrexDescription: "Popis: webová stránka pro charitativní fond Amondrex, vytvořená pomocí React a TypeScript.",
     projectKeyboardTitle: "Hra na klávesnici — Test",
     projectKeyboardDescription: "Popis: interaktivní webová hra pro procvičování psaní na klávesnici. Otestuj svou rychlost a přesnost ve psaní.",
     projectMoviesTitle: "Hledání filmových karet",
