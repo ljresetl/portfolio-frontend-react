@@ -54,7 +54,7 @@ const WeatherTicker: React.FC = () => {
 
   // 🔹 Завантаження списку міст з GitHub
   useEffect(() => {
-    fetch("https://raw.githubusercontent.com/ljresetl/weather-cities/main/cities.json")
+    fetch("/cities.json")
       .then(res => res.json()) // перетворюємо відповідь у JSON
       .then((data: City[]) => setCities(data)) // зберігаємо у стан
       .catch(() => console.error("Не вдалося завантажити список міст"));
