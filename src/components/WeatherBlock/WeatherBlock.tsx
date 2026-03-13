@@ -4,13 +4,14 @@ import styles from "./WeatherBlock.module.scss";
 import { WiDaySunny, WiCloud, WiRain, WiSnow } from "react-icons/wi";
 import citiesData from "../../data/cities.json";
 
-// Типи
+// 🔥 Тип під реальний JSON
 interface City {
-  id: number;
   name: string;
+  lat: string;
+  lng: string;
   country: string;
-  cs?: string;
-  uk?: string;
+  admin1?: string;
+  admin2?: string;
 }
 
 interface ForecastItem {
@@ -43,12 +44,11 @@ const WeatherTicker: React.FC = () => {
   const [days, setDays] = useState<TickerDay[]>([]);
   const [bgClass, setBgClass] = useState("defaultBg");
 
-  // 🔥 Завантаження міст без fetch — миттєво, без мережевих запитів
+  // 🔥 Завантаження міст без fetch
   useEffect(() => {
     setCities(citiesData as City[]);
   }, []);
 
-  // Іконки
   const weatherIcon = (code: string) => {
     if (code.includes("01")) return <WiDaySunny size={22} color="#facc15" />;
     if (code.includes("02") || code.includes("03")) return <WiCloud size={22} color="#64748b" />;
@@ -57,7 +57,6 @@ const WeatherTicker: React.FC = () => {
     return <WiCloud size={22} color="#94a3b8" />;
   };
 
-  // Завантаження погоди
   const getWeather = useCallback(
     async (selectedCity: string) => {
       const url = `https://api.openweathermap.org/data/2.5/forecast?q=${selectedCity}&appid=${API_KEY}&units=metric&lang=en`;
@@ -121,12 +120,7 @@ const WeatherTicker: React.FC = () => {
 
     const q = query.toLowerCase();
     const filtered = cities
-      .filter(
-        c =>
-          c.name.toLowerCase().includes(q) ||
-          (c.cs && c.cs.toLowerCase().includes(q)) ||
-          (c.uk && c.uk.toLowerCase().includes(q))
-      )
+      .filter(c => c.name.toLowerCase().includes(q))
       .slice(0, 10);
 
     setMatches(filtered);
@@ -153,7 +147,7 @@ const WeatherTicker: React.FC = () => {
         {matches.length > 0 && (
           <ul className={styles.autocompleteList}>
             {matches.map(c => (
-              <li key={c.id} onClick={() => handlePickCity(c)}>
+              <li key={c.name} onClick={() => handlePickCity(c)}>
                 {c.name}, {c.country}
               </li>
             ))}
