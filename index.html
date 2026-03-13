@@ -25,7 +25,7 @@
     <link rel="apple-touch-icon" href="/favicon.png" />
     <meta name="theme-color" content="#0a0a0a" />
 
-    <!-- 📱 Open Graph (для соцмереж) -->
+    <!-- 📱 Open Graph -->
     <meta
       property="og:title"
       content="Junior Frontend Developer Portfolio | Vitalii Baranov"
@@ -67,7 +67,7 @@
       href="https://portfolio-frontend-react-flax.vercel.app/cz"
     />
 
-    <!-- 🎨 Підключення шрифту Manrope через Google Fonts (неблокуюче) -->
+    <!-- 🎨 Шрифт Manrope (неблокуюче завантаження) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -87,25 +87,12 @@
         href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;800&display=swap"
       />
     </noscript>
-
-    <!-- 🎨 Preload основного CSS (неблокуюче) -->
-    <link rel="preload" href="/assets/index-BABcVBQo.css" as="style" />
-    <link
-      rel="stylesheet"
-      href="/assets/index-BABcVBQo.css"
-      media="print"
-      onload="this.media='all'"
-    />
-    <noscript>
-      <link rel="stylesheet" href="/assets/index-BABcVBQo.css" />
-    </noscript>
   </head>
 
   <body>
-    <!-- ⚛️ Основний контейнер для React -->
     <div id="root"></div>
 
-    <!-- ⚡ JS: Vite сам замінить шлях на /assets/...js при білді -->
+    <!-- ⚡ Vite підставить правильний JS і CSS у білді -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
